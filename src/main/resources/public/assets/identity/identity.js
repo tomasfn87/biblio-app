@@ -7,7 +7,7 @@ const urlParams = new URLSearchParams(window.location.search);
 
 var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 supabase.auth.onAuthStateChange((event, session) => {
-    //console.log(event, session);
+    // console.log(event, session);
     setToken(session);
     if (isSignUpPage) {
         if (session.access_token) {
@@ -49,15 +49,15 @@ function displayError(errorMessage) {
 }
 
 function updateCookies() {
-    if (!supabase || !supabase.auth || !supabase.auth.session()) {
+    if (!supabase || !supabase.auth || !supabase.auth.getSession()) {
         document.cookie = "access-token=null;max-age=0;path=/";
         return;
     }
 
     if (localStorage.getItem("remember-me") === 'true')
-        document.cookie = "access-token=" + supabase.auth.session().access_token + ";max-age=2147483640;path=/";
+        document.cookie = "access-token=" + supabase.auth.getSession().access_token + ";max-age=2147483640;path=/";
     else
-        document.cookie = "access-token=" + supabase.auth.session().access_token + ";path=/";
+        document.cookie = "access-token=" + supabase.auth.getSession().access_token + ";path=/";
 }
 
 function setToken(response) {
@@ -67,7 +67,7 @@ function setToken(response) {
     }
 
     if (response.user.confirmation_sent_at && !response.access_token) {
-        displayError('Confirmation Email Sent')
+        displayError('Email de Confirmação Enviado')
     } else {
         updateCookies(response.access_token);
     }

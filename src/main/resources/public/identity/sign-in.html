@@ -34,7 +34,7 @@
         const githubSubmitted = (event) => {
             event.preventDefault()
 
-            supabase.auth.signIn({provider: 'github'}, {
+            supabase.auth.signInWithOAuth({provider: 'github'}, {
                 redirectTo: window.location.href + "?login=true"
             })
                 .then((response) => {
@@ -52,7 +52,7 @@
         const twitterSubmitted = (event) => {
             event.preventDefault();
 
-            supabase.auth.signIn({provider: 'twitter'}, {
+            supabase.auth.signInWithOAuth({provider: 'twitter'}, {
                 redirectTo: window.location.href + "?login=true"
             })
                 .then((response) => {
@@ -81,7 +81,7 @@
             const email = event.target[0].value
             const password = event.target[1].value
 
-            supabase.auth.signIn({email, password})
+            supabase.auth.signInWithPassword({email, password})
                 .then((response) => {
                     if (response.error) {
                         console.log(response);
@@ -101,17 +101,17 @@
 <section layout:fragment="content">
     <div class='container-sm d-flex flex-wrap justify-content-center'>
         <div class="section text-center w-75">
-            <h1>Sign In</h1>
+            <h1>Entrar</h1>
             <div sec:authorize="isAuthenticated()">
-                <p>Already logged in as <span th:text="${#authentication.name}">username</span></p>
-                <p><a href="/identity/sign-out.html" th:href="@{/public/sign-out}">Sign Out</a></p>
+                <p>Já encontra-se logado como <span th:text="${#authentication.name}">username</span></p>
+                <p><a href="/identity/sign-out.html" th:href="@{/public/sign-out}">Sair</a></p>
             </div>
         </div>
 
         <div class='section w-75' sec:authorize="!isAuthenticated()" th:if="${hasToken}">
             <div class="text-center">
                 <div>
-                    <p>Redirecting...</p>
+                    <p>Redirecionando...</p>
                 </div>
             </div>
         </div>
@@ -134,7 +134,7 @@
                 <form id='sign-up'>
                     <div class="mb-3 form-floating">
                         <input autocomplete="email" autofocus class="form-control" id="email" name='email'
-                               placeholder="name@example.com"
+                               placeholder="nome@exemplo.com.br"
                                type='email'/>
                         <label for="email">Email</label>
                     </div>
@@ -142,23 +142,21 @@
                         <input autocomplete="current-password" class="form-control" id="password" maxlength="250"
                                name="password"
                                placeholder="password" required type="password">
-                        <label for="password">Password</label>
+                        <label for="password">Senha</label>
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="form-check form-switch mb-3">
                             <input class="form-check-input" id="formInput2" type="checkbox">
-                            <label class="form-check-label" for="formInput2">Remember Me</label>
+                            <label class="form-check-label" for="formInput2">Lembre-se de mim</label>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-primary" id="sign-in-button" name="sign-up-button" type='submit'>Sign
-                            In
+                        <button class="btn btn-primary" id="sign-in-button" name="sign-up-button" type='submit'>Entrar
                         </button>
                     </div>
                     <div class="mb-3 py-md-3 text-center">
-                        <a href="/identity/create-account.html" th:href="@{/public/create-account}">Create Account</a> |
-                        <a href="/identity/forgot-password.html" th:href="@{/public/forgot-password}">Forgot
-                            Password</a>
+                        <a href="/identity/create-account.html" th:href="@{/public/create-account}">Criar Conta</a> |
+                        <a href="/identity/forgot-password.html" th:href="@{/public/forgot-password}">Esqueceu a Senha</a>
                     </div>
                 </form>
             </div>

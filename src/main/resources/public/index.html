@@ -5,22 +5,23 @@
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
         <script src="/assets/identity/identity.js"></script>
         <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <title>Home</title>
+        <title>Biblioteca GFE Irmão Camilo</title>
     </head>
     <body>
         <section layout:fragment="content">
             <div class='align-items-center container justify-content-center text-center w-75'>
                 <div class="section">
                     <div sec:authorize="isAuthenticated()">
-                        <div th:text="${#authentication.name}">
-                            User Name
-</div>
-                        <div></div><a href="/identity/sign-out.html" th:href="@{/public/sign-out}">Sign Out</a>
-                    </div><a href="/secure.html" th:href="@{/secure}">Profile</a>
+                        <div th:text="${#authentication.name}">Email</div>
+                        <div></div><a href="/identity/sign-out.html" th:href="@{/public/sign-out}">Sair</a>
+                    </div><a href="/secure.html" th:href="@{/secure}">Perfil</a>
                 </div>
-                <div sec:authorize="!isAuthenticated()"><a href="/identity/sign-in.html" th:href="@{/public/sign-in}">Sign In</a> | <a href="/identity/create-account.html" th:href="@{/public/create-account}">Create Account</a>
+                <div sec:authorize="!isAuthenticated()">
+                    <a href="/identity/sign-in.html" th:href="@{/public/sign-in}">Entrar
+                    </a> | <a href="/identity/create-account.html" th:href="@{/public/create-account}">
+                    Criar Conta</a>
                 </div>
-                <p>Welcome!</p>
+                <p>Bem vindo!</p>
             </div>
         </section>
         <script src="/assets/js/popper.min.js"></script>
