@@ -32,19 +32,22 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
             logger.info("h2 not found.");
         }
 
-        http
-                .addFilter(new JwtAuthorizeFilter(authenticationManager(), supabaseAuthService))
-                .authorizeRequests()
-                .antMatchers("/**/*.html", "/pinegrow.json").denyAll()
-                .antMatchers("/assets/**", "/blocks.css", "/public/**", "/bootstrap/**", "/webjars/**", "/", "/h2-console/**").permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin().loginPage("/public/sign-in")
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-        ;
+        // PROBLEMA: Não permite assessar nenhuma outra página além do login
+
+        //http
+        //        .addFilter(new JwtAuthorizeFilter(authenticationManager(), supabaseAuthService))
+        //        .authorizeRequests()
+        //        .antMatchers("/**/*.html", "/pinegrow.json").denyAll()
+        //        .antMatchers("/assets/**", "/blocks.css", "/public/**", "/bootstrap/**", "/webjars/**", "/", "/h2-console/**").permitAll()
+        //        .anyRequest()
+        //        .authenticated()
+        //        .and()
+        //        .formLogin().loginPage("/public/sign-in")
+        //        .and()
+        //        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        //        .and()
+        //;
         logger.info("Security configured.");
+
     }
 }
