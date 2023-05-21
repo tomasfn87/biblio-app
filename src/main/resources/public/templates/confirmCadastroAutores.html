@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<!--
-ERRO AO CARREGAR O CONTEÚDO DA PÁGINA
 <html lang="pt-br" layout:decorate="~{layout.html}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
--->
-
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
@@ -12,16 +7,16 @@ ERRO AO CARREGAR O CONTEÚDO DA PÁGINA
     <title>Confirmação de Cadastro de Autores</title>
 </head>
 <body>
+    <section layout:fragment="content">
+        <h1>Dados enviados pelo usuário:</h1>
 
-    <h1>Dados enviados pelo usuário:</h1>
+        <p>id<b th:text="${autor.id}"/></p>
+        <p>id Autor: <b th:text="${autor.id_autor}"/></p>
+        <p>Nome: <b th:text="${autor.nome}"/></p>
+        <p>Sobrenome: <b th:text="${autor.sobrenome}"/></p>
+        <p>Descricao: <b th:text="${autor.descricao}"/></p>
 
-    <p>idAutor: <b th:text="${autor.idAutor}"/></p>
-    <p>Nome: <b th:text="${autor.nome}"/></p>
-    <p>Sobrenome: <b th:text="${autor.sobrenome}"/></p>
-    <p>Descricao: <b th:text="${autor.descricao}"/></p>
-
-    <a href="/" th:href="@{/public/index}">
-        voltar ao início</a>
-
+        <a href="/" th:href="@{/}">voltar ao início</a>
+    </section>
 </body>
 </html>

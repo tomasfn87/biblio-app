@@ -1,74 +1,79 @@
 package com.changenode.frisson.model;
 
+import com.changenode.frisson.data.ToDo;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
 @Table(name = "autores", schema = "public")
 public class Autores implements Serializable {
-
-   @Id
-   @Column(name = "id", nullable = false)
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   private int id;
-
-   @Basic
-   @Column(name = "idAutor", nullable = false)
-   private UUID idAutor;
-
-   @Basic
-   @Column(name = "nome")
+   private Long id;
+   private UUID id_autor;
    private String nome;
-
-   @Basic
-   @Column(name = "sobrenome")
    private String sobrenome;
-
-   @Basic
-   @Column(name = "descricao")
    private String descricao;
 
-   public int getId() {
+   @Id()
+   @Column(name = "id", nullable = false)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   public Long getId() {
       return this.id;
    }
-
-   public void setId(int id) {
+   public void setId(Long id) {
       this.id = id;
    }
 
-   public UUID getIdAutor() {
-      return this.idAutor;
+   @Basic
+   @Column(name = "id_autor", nullable = false)
+   public UUID getId_autor() {
+      return this.id_autor;
+   }
+   public void setId_autor(UUID id_autor) {
+      this.id_autor = id_autor;
    }
 
-   public void setIdAutor(UUID idAutor) {
-      this.idAutor = idAutor;
-   }
+   @Basic
+   @Column(name = "nome")
+   public String getNome() { return this.nome; }
+   public void setNome(String nome) { this.nome = nome; }
 
-
-   public String getNome() {
-      return this.nome;
-   }
-
-   public void setNome(String nome) {
-      this.nome = nome;
-   }
-
-
+   @Basic
+   @Column(name = "sobrenome")
    public String getSobrenome() {
       return this.sobrenome;
    }
-
    public void setSobrenome(String sobrenome) {
       this.sobrenome = sobrenome;
    }
 
-
+   @Basic
+   @Column(name = "descricao")
    public String getDescricao() {
       return this.descricao;
    }
-
    public void setDescricao(String descricao) {
       this.descricao = descricao;
    }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Autores that = (Autores) o;
+      return id == that.id &&
+              Objects.equals(id_autor, that.id_autor) &&
+              Objects.equals(nome, that.nome) &&
+              Objects.equals(sobrenome, that.sobrenome) &&
+              Objects.equals(descricao, that.descricao)
+              ;
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(id, id_autor, nome, sobrenome, descricao);
+   }
+
 }

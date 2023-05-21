@@ -17,15 +17,12 @@ import java.util.UUID;
 public class FormController {
 
     @Autowired
-    private AutoresEntityQuery autoresEntityQuery;
+    AutoresEntityQuery autoresEntityQuery;
 
     @GetMapping
     public String formAutores(final Model model) {
         Autores autor = new Autores();
-        autor.setIdAutor(UUID.fromString("517d99fe-db7d-467e-b3f2-be5ac8c41752"));
-        autor.setNome("exemplo de nome");
-        autor.setSobrenome("exemplo de sobrenome");
-        autor.setDescricao("exemplo de descrição");
+        autor.setId_autor(UUID.fromString("517d99fe-db7d-467e-b3f2-be5ac8c41752"));
         model.addAttribute("autor", autor);
         return "templates/formAutores";
     }
@@ -33,7 +30,7 @@ public class FormController {
     @PostMapping
     public String formAutores(@ModelAttribute(name="autor") final Autores autor) {
 
-        //autoresEntityQuery.save(autor); ERRO: Problema com Hibernate
+        autoresEntityQuery.save(autor); //ERRO: Problema com Hibernate
 
         return "templates/confirmCadastroAutores";
     }
