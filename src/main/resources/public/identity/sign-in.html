@@ -12,13 +12,13 @@
         window.isSignUpPage = true;
 
         document.addEventListener('DOMContentLoaded', function () {
-            const gitHubButton = document.querySelector('#github-button');
-            if (gitHubButton)
-                gitHubButton.onclick = githubSubmitted.bind(gitHubButton);
+            const googleButton = document.querySelector('#google-button');
+            if (googleButton)
+                googleButton.onclick = googleSubmitted.bind(googleButton);
 
-            const twitterButton = document.querySelector('#t-button');
-            if (twitterButton)
-                twitterButton.onclick = twitterSubmitted.bind(twitterButton);
+            const appleButton = document.querySelector('#apple-button');
+            if (appleButton)
+                appleButton.onclick = appleSubmitted.bind(appleButton);
 
             const logInForm = document.querySelector('#sign-up');
             if (logInForm)
@@ -31,10 +31,10 @@
             }
         });
 
-        const githubSubmitted = (event) => {
+        const appleSubmitted = (event) => {
             event.preventDefault()
 
-            supabase.auth.signInWithOAuth({provider: 'github'}, {
+            supabase.auth.signInWithOAuth({provider: 'apple'}, {
                 redirectTo: window.location.href + "?login=true"
             })
                 .then((response) => {
@@ -49,10 +49,10 @@
                 })
         }
 
-        const twitterSubmitted = (event) => {
+        const googleSubmitted = (event) => {
             event.preventDefault();
 
-            supabase.auth.signInWithOAuth({provider: 'twitter'}, {
+            supabase.auth.signInWithOAuth({provider: 'google'}, {
                 redirectTo: window.location.href + "?login=true"
             })
                 .then((response) => {
@@ -118,11 +118,11 @@
 
         <div class='section w-75' sec:authorize="!isAuthenticated()" th:if="${!hasToken}">
             <div class="d-flex justify-content-center mb-3 text-center">
-                <button class="btn btn-primary mx-1" id="t-button" type="button">
-                    <img alt="Twitter Login" src="/assets/svg/logo-twitter.svg"/>Twitter
+                <button class="btn btn-primary mx-1" id="google-button" type="button">
+                    <img alt="Google Login" src="/assets/svg/logo-google.svg" height="50px"/><br>Google
                 </button>
-                <button class="btn btn-primary mx-1" id="github-button" type="button">
-                    <img alt="GitHub Login" src="/assets/svg/logo-github.svg"/>GitHub
+                <button class="btn btn-primary mx-1" id="apple-button" type="button">
+                    <img alt="Apple Login" src="/assets/svg/logo-apple.svg" height="50px"/><br>Apple
                 </button>
             </div>
             <div class="text-center">
