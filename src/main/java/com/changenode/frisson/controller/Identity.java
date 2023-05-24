@@ -61,7 +61,7 @@ public class Identity {
     @GetMapping("/sign-out")
     public String logout(HttpServletResponse response) {
         Cookie accessToken = new Cookie("access-token", null);
-        accessToken.setMaxAge(-1);
+        accessToken.setMaxAge(3600);
         accessToken.setPath("/");
         response.addCookie(accessToken);
         return "identity/sign-out";

@@ -9,29 +9,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/public/cadastrarAutores")
-public class FormController {
+@RequestMapping("/public/listarAutores")
+public class ListarAutoresController {
 
     @Autowired
     AutoresEntityQuery autoresEntityQuery;
 
-    @GetMapping
-    public String formAutores(final Model model) {
-        Autores autor = new Autores();
-        autor.setId_autor(UUID.fromString("517d99fe-db7d-467e-b3f2-be5ac8c41752"));
-        model.addAttribute("autor", autor);
-        return "templates/formAutores";
+    @ModelAttribute("listaAutores")
+    public List<Autores> obterListaDeAutores() {
+        return autoresEntityQuery.findAll();
     }
 
-    @PostMapping
-    public String formAutores(@ModelAttribute(name="autor") final Autores autor) {
-
-        autoresEntityQuery.save(autor); //ERRO: Problema com Hibernate
-
-        return "templates/confirmCadastroAutores";
+    @GetMapping
+    public String listarAutores(Model model) {
+        List<Autores> listaDeAutores = obterListaDeAutores();
+        model.addAttribute("listaAutores", listaDeAutores);
+        return "templates/listarAutores";
     }
 }
