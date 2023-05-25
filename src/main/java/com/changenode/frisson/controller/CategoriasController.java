@@ -1,7 +1,7 @@
 package com.changenode.frisson.controller;
 
-import com.changenode.frisson.model.Autores;
-import com.changenode.frisson.query.AutoresQuery;
+import com.changenode.frisson.model.Categorias;
+import com.changenode.frisson.query.CategoriasQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,22 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/public/cadastrar-autores")
-public class AutoresController {
+@RequestMapping("/public/cadastrar-categorias")
+public class CategoriasController {
     @Autowired
-    AutoresQuery entityQuery;
+    CategoriasQuery entityQuery;
     @GetMapping
     public String formCadastro(final Model model) {
-        Autores autor = new Autores();
-        autor.setId_autor(UUID.fromString("517d99fe-db7d-467e-b3f2-be5ac8c41752"));
-        model.addAttribute("autor", autor);
-        return "templates/formulario-autores";
+        Categorias categoria = new Categorias();
+        model.addAttribute("categoria", categoria);
+        return "templates/formulario-categorias";
     }
 
     @PostMapping
-    public String formCadastro(@ModelAttribute(name="autor") final Autores autor) {
-        entityQuery.save(autor);
+    public String formCadastro(@ModelAttribute(name="categoria") final Categorias categoria) {
+        entityQuery.save(categoria);
 
-        return "templates/confirmar-cadastro-de-autores";
+        return "templates/confirmar-cadastro-de-categorias";
     }
 }
