@@ -1,7 +1,7 @@
 package com.changenode.frisson.controller;
 
 import com.changenode.frisson.model.Autores;
-import com.changenode.frisson.query.AutoresEntityQuery;
+import com.changenode.frisson.query.AutoresQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,25 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/public/cadastrarAutores")
-public class FormController {
-
+@RequestMapping("/public/cadastrar-autores")
+public class AutoresController {
     @Autowired
-    AutoresEntityQuery autoresEntityQuery;
-
+    AutoresQuery autoresEntityQuery;
     @GetMapping
     public String formAutores(final Model model) {
         Autores autor = new Autores();
         autor.setId_autor(UUID.fromString("517d99fe-db7d-467e-b3f2-be5ac8c41752"));
         model.addAttribute("autor", autor);
-        return "templates/formAutores";
+        return "templates/formulario-autores";
     }
 
     @PostMapping
     public String formAutores(@ModelAttribute(name="autor") final Autores autor) {
+        autoresEntityQuery.save(autor);
 
-        autoresEntityQuery.save(autor); //ERRO: Problema com Hibernate
-
-        return "templates/confirmCadastroAutores";
+        return "templates/confirmar-cadastro-de-autores";
     }
 }
