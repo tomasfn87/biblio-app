@@ -14,7 +14,7 @@
             <h1>Cadastro de Categoterias</h1>
         </div>
         <div class="section w-75">
-            <form th:action="@{/public/cadastrarCategoria}" th:object="${categoria}" method="post">
+            <form th:action="@{/public/cadastrar-categorias}" th:object="${categoria}" method="post">
                 <label for="categoria-descricao">Descrição</label><br>
                 <div class="mb-3 form-floating">
                     <input id="categoria-descricao" type="text" th:field="*{descricao}"  class="form-control" placeholder="Exemplo descrição"/><br/>
