@@ -7,4 +7,7 @@ public enum CondicoesEnum {
     usado,
     sem_capa,
     rasgado,
+    rasurado,
+    incompleto,
+    extraviado,
 }

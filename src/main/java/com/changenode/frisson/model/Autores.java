@@ -1,8 +1,7 @@
 package com.changenode.frisson.model;
 
-import com.changenode.frisson.data.ToDo;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
@@ -36,17 +35,17 @@ public class Autores implements Serializable {
    }
 
    @Basic
-   @Column(name = "nome")
+   @Column(name = "nome", nullable = false)
    public String getNome() { return this.nome; }
-   public void setNome(String nome) { this.nome = nome; }
+   public void setNome(@NotNull String nome) { this.nome = nome.toUpperCase(); }
 
    @Basic
-   @Column(name = "sobrenome")
+   @Column(name = "sobrenome", nullable = false)
    public String getSobrenome() {
       return this.sobrenome;
    }
-   public void setSobrenome(String sobrenome) {
-      this.sobrenome = sobrenome;
+   public void setSobrenome(@NotNull String sobrenome) {
+      this.sobrenome = sobrenome.toUpperCase();
    }
 
    @Basic

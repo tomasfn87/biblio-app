@@ -1,16 +1,48 @@
 package com.changenode.frisson.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Objects;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Categorias {
+@Entity
+@Table(name = "categorias", schema = "public")
+public class Categorias implements Serializable {
 
-    public Integer idCategoria;
-    public String Descricao;
+    private Long id_categoria;
+    private String descricao;
+
+    @Id()
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId_categoria() {
+        return this.id_categoria;
+    }
+    public void setId_categoria(Long id_categoria) {
+        this.id_categoria = id_categoria;
+    }
+
+    @Basic
+    @Column(name = "descricao", unique = true, nullable = false)
+    public String getDescricao() {
+        return this.descricao;
+    }
+    public void setDescricao(@NotNull String descricao) {
+        this.descricao = descricao.toLowerCase();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Categorias that = (Categorias) o;
+        return id_categoria == that.id_categoria    &&
+                Objects.equals(descricao, that.descricao)
+                ;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_categoria, descricao);
+    }
 }
