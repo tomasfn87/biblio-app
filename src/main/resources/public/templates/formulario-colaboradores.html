@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{layout.html}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Cadastro de Autores</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class='container-sm d-flex flex-wrap justify-content-center'>
+        <div class="section text-center w-75">
+            <h1>Cadastro de Colaboradores</h1>
+        </div>
+        <div class="section w-75">
+            <form th:action="@{/public/cadastrar-colaboradores}" th:object="${colaborador}" method="post">
+                <label for="colaborador-nome">Nome do colaborador</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="colaborador-nome" type="text" autofocus th:field="*{nome}" class="form-control" placeholder="Exemplo colaborador"/><br/>
+                </div>
+                <label for="colaborador-cpf">CPF do colaborador</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="colaborador-cpf" type="number" th:field="*{cpf}" class="form-control" placeholder="Exemplo cpf"/><br/>
+                </div>
+                <label for="colaborador-endereco">Endereço</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="colaborador-endereco" type="text" th:field="*{endereco}"  class="form-control" placeholder="Exemplo endereço"/><br/>
+                </div>
+                <label for="colaborador-telefone">Telefone</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="colaborador-telefone" type="phone" th:field="*{telefone}"  class="form-control" placeholder="Exemplo telefone"/><br/>
+                </div>
+                <label for="colaborador-whatsapp">Whatsapp</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="colaborador-whatsapp" type="phone" th:field="*{whatsapp}"  class="form-control" placeholder="Exemplo whatsapp"/><br/>
+                </div>
+                <label for="colaborador-email">Email</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="colaborador-email" type="text" th:field="*{email}"  class="form-control" placeholder="exemplo@exemplo.com"/><br/>
+                </div>
+                <label for="colaborador-cadastro">Data do cadastro</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="colaborador-cadastro" type="date" th:field="*{usuario_cadastro}"  class="form-control" placeholder="01/01/2000"/><br/>
+                </div>
+                <label for="colaborador-exclusao">Data da exclusao</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="colaborador-exclusao" type="date" th:field="*{usuario_exclusao}"  class="form-control" placeholder="01/01/2000"/><br/>
+                </div>
+                <label for="colaborador-observacao">Observação</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="colaborador-observacao" type="text" th:field="*{observacao}"  class="form-control" placeholder="Exemplo observação"/><br/>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary" type='submit'>Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

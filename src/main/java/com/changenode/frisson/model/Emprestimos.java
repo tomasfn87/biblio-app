@@ -59,7 +59,7 @@ public class Emprestimos {
         this.id_usuario = id_usuario;
     }
     public void setId_usuario(@NotNull Usuarios usuario) {
-        this.id_usuario = usuario.getId();
+        this.id_usuario = usuario.getId_usuario();
     }
 
     @Basic
@@ -70,7 +70,7 @@ public class Emprestimos {
     public void setId_colaborador(Long id_colaborador) {
         this.id_colaborador = id_colaborador;
     }
-    public void setId_colaborador(@NotNull Colaboradores colaborador) { this.id_colaborador = colaborador.getId(); }
+    public void setId_colaborador(@NotNull Colaboradores colaborador) { this.id_colaborador = colaborador.getId_colaborador(); }
 
     @Basic
     @Column(name = "data_reserva", nullable = false)

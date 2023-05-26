@@ -1,7 +1,7 @@
 package com.changenode.frisson.controller;
 
-import com.changenode.frisson.model.Autores;
-import com.changenode.frisson.query.AutoresQuery;
+import com.changenode.frisson.model.Colaboradores;
+import com.changenode.frisson.query.ColaboradoresQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,25 +10,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.UUID;
-
 @Controller
-@RequestMapping("/public/cadastrar-autores")
-public class AutoresController {
+@RequestMapping("/public/cadastrar-colaboradores")
+public class ColaboradoresController {
     @Autowired
-    AutoresQuery entityQuery;
+    ColaboradoresQuery entityQuery;
     @GetMapping
     public String formCadastro(final Model model) {
-        Autores obj = new Autores();
-        obj.setId_autor(UUID.fromString("517d99fe-db7d-467e-b3f2-be5ac8c41752"));
-        model.addAttribute("autor", obj);
-        return "templates/formulario-autores";
+        Colaboradores obj = new Colaboradores();
+        model.addAttribute("colaborador", obj);
+        return "templates/formulario-colaboradores";
     }
 
     @PostMapping
-    public String formCadastro(@ModelAttribute(name="autor") final Autores obj) {
+    public String formCadastro(@ModelAttribute(name="colaborador") final Colaboradores obj) {
         entityQuery.save(obj);
 
-        return "templates/confirmar-cadastro-de-autores";
+        return "templates/confirmar-cadastro-de-colaboradores";
     }
 }
