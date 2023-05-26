@@ -29,7 +29,7 @@ public class Enderecos {
             estado = enderecos.getUnidade(6);
             cep = Integer.getInteger(enderecos.getUnidade(7));
         }catch (IndexOutOfBoundsException e){
-            System.out.println("Número de campos inferiores ao necessário.");
+            System.out.println("Número de campos inferiores ao necessário.\n");
         }catch (SecurityException e){
             System.out.println("Erro na conversão de campos numéricos.");
         }catch (PatternSyntaxException e){

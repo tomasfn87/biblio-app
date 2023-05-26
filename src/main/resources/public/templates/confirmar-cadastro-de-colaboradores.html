@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{layout.html}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <title>Confirmação de Cadastro de Colaboradores</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <h1>Dados enviados pelo colaborador:</h1>
+
+        <p>id: <b th:text="${colaborador.id_usuario}"/></p>
+        <p>nome: <b th:text="${colaborador.nome}"/></p>
+        <p>cpf: <b th:text="${colaborador.cpf}"/></p>
+        <p>endereco: <b th:text="${colaborador.endereco}"/></p>
+        <p>telefone: <b th:text="${colaborador.telefone}"/></p>
+        <p>whatsApp: <b th:text="${colaborador.whatsapp}"/></p>
+        <p>email: <b th:text="${colaborador.email}"/></p>
+        <p>usuario_cadastro: <b th:text="${colaborador.usuario_cadastro}"/></p>
+        <p>usuario_exclusao: <b th:text="${colaborador.usuario_exclusao}"/></p>
+        <p>observacao: <b th:text="${colaborador.observacao}"/></p>
+
+        <a href="/" th:href="@{/}">voltar ao início</a>
+    </section>
+</body>
+</html>

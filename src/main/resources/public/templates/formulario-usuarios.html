@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{layout.html}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Cadastro de Autores</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class='container-sm d-flex flex-wrap justify-content-center'>
+        <div class="section text-center w-75">
+            <h1>Cadastro de Usuarios</h1>
+        </div>
+        <div class="section w-75">
+            <form th:action="@{/public/cadastrar-usuarios}" th:object="${usuario}" method="post">
+                <label for="usuario-nome">Nome do usuario</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-nome" type="text" autofocus th:field="*{nome}" class="form-control" placeholder="Exemplo usuario"/><br/>
+                </div>
+                <label for="usuario-cpf">CPF do usuario</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-cpf" type="number" th:field="*{cpf}" class="form-control" placeholder="Exemplo cpf" max="99999999999"/><br/>
+                </div>
+                <label for="usuario-endereco">Endereço</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-endereco" type="text" th:field="*{endereco}"  class="form-control" placeholder="Exemplo endereço"/><br/>
+                </div>
+                <label for="usuario-telefone">Telefone</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-telefone" type="text" pattern="\([0-9]{2}\)[0-9]{4}-[0-9]{4}" th:field="*{telefone}"
+                           class="form-control" placeholder="Exemplo telefone" maxlength="13"/><br/>
+                </div>
+                <label for="usuario-whatsapp">Whatsapp</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-whatsapp" type="tel" th:field="*{whatsapp}" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}"
+                           class="form-control" placeholder="Exemplo whatsapp" maxlength="14"/><br/>
+                </div>
+                <label for="usuario-email">Email</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-email" type="email" th:field="*{email}"  class="form-control" placeholder="exemplo@exemplo.com"/><br/>
+                </div>
+                <label for="usuario-cadastro">Data do cadastro</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-cadastro" type="date" th:field="*{usuario_cadastro}"  class="form-control" placeholder="01/01/2000"/><br/>
+                </div>
+                <label for="usuario-exclusao">Data da exclusao</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-exclusao" type="date" th:field="*{usuario_exclusao}"  class="form-control" placeholder="01/01/2000"/><br/>
+                </div>
+                <label for="usuario-observacao">Observação</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-observacao" type="text" th:field="*{observacao}"  class="form-control" placeholder="Exemplo observação"/><br/>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary" type='submit'>Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

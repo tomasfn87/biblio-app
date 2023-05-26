@@ -19,14 +19,14 @@ public class CategoriasController {
     CategoriasQuery entityQuery;
     @GetMapping
     public String formCadastro(final Model model) {
-        Categorias categoria = new Categorias();
-        model.addAttribute("categoria", categoria);
+        Categorias obj = new Categorias();
+        model.addAttribute("categoria", obj);
         return "templates/formulario-categorias";
     }
 
     @PostMapping
-    public String formCadastro(@ModelAttribute(name="categoria") final Categorias categoria) {
-        entityQuery.save(categoria);
+    public String formCadastro(@ModelAttribute(name="categoria") final Categorias obj) {
+        entityQuery.save(obj);
 
         return "templates/confirmar-cadastro-de-categorias";
     }

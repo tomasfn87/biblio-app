@@ -1,29 +1,27 @@
 package com.changenode.frisson.model;
 
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "usuarios", schema = "public")
 public class Usuarios implements Serializable {
-    private Long id;
+    @Id
+    @Column(name = "id_usuario", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_usuario;
     private String nome;
-    @CPF
-    @Valid
-    private Integer cpf;
+    private Long cpf;
     private String endereco;
-    private Integer telefone;
-    private Integer whatsApp;
+    private String telefone;
+    private String whatsapp;
     @Email
-    @Valid
     private String email;
     @DateTimeFormat
     private Date usuario_cadastro;
@@ -31,14 +29,12 @@ public class Usuarios implements Serializable {
     private Date usuario_exclusao;
     private String observacao;
 
-    @Id()
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId() {
-        return id;
+
+    public Long getId_usuario() {
+        return this.id_usuario;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_usuario(Long id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     @Basic
@@ -52,11 +48,12 @@ public class Usuarios implements Serializable {
 
     @Basic
     @Column(name = "cpf", unique = true, nullable = false)
-    public Integer getCpf() {
-        return cpf;
+    public Long getCpf() {
+        return this.cpf;
     }
-    public void setCpf(Integer cpf) {
-        this.cpf = cpf;
+    public void setCpf(String cpf) {
+        if(!cpf.isBlank())
+            this.cpf = Long.valueOf(cpf);
     }
 
     @Basic
@@ -65,32 +62,29 @@ public class Usuarios implements Serializable {
         return endereco;
     }
 
-    /** Verificar viabilidade técnica do parâmetro com classe Endereço
-     *  para o uso do Model na página.
-     */
     public void setEndereco(String endereco) {
-        this.endereco = new Enderecos(endereco).toString();
-    }
-    public void setEndereco(Enderecos endereco) {
-        this.endereco = endereco.toString();
+        //this.endereco = new Enderecos(endereco).toString();
+        this.endereco = endereco;
     }
 
     @Basic
     @Column(name = "telefone")
-    public Integer getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
-    public void setTelefone(Integer telefone) {
-        this.telefone = telefone;
+    public void setTelefone(String telefone) {
+        if(!telefone.isBlank())
+            this.telefone = telefone;//Long.valueOf(telefone);
     }
 
     @Basic
     @Column(name = "whatsapp")
-    public Integer getWhatsApp() {
-        return whatsApp;
+    public String getWhatsapp() {
+        return whatsapp;
     }
-    public void setWhatsApp(Integer whatsApp) {
-        this.whatsApp = whatsApp;
+    public void setWhatsapp(String whatsapp) {
+        if(!whatsapp.isBlank())
+            this.whatsapp = whatsapp;//Long.valueOf(whatsapp);
     }
 
     @Basic
@@ -99,7 +93,8 @@ public class Usuarios implements Serializable {
         return email;
     }
     public void setEmail(String email) {
-        this.email = (email==null ? null : email.toLowerCase());
+        if(!email.isBlank())
+            this.email = email.toLowerCase();
     }
 
     @Basic
@@ -107,8 +102,8 @@ public class Usuarios implements Serializable {
     public Date getUsuario_cadastro() {
         return usuario_cadastro;
     }
-    public void setUsuario_cadastro(Date usuario_cadastro) {
-        this.usuario_cadastro = usuario_cadastro;
+    public void setUsuario_cadastro(String usuario_cadastro) {
+        this.usuario_cadastro = Date.valueOf(usuario_cadastro);
     }
 
     @Basic
@@ -116,8 +111,9 @@ public class Usuarios implements Serializable {
     public Date getUsuario_exclusao() {
         return usuario_exclusao;
     }
-    public void setUsuario_exclusao(Date usuario_exclusao) {
-        this.usuario_exclusao = usuario_exclusao;
+    public void setUsuario_exclusao(String usuario_exclusao) {
+        if(!usuario_exclusao.isBlank())
+            this.usuario_exclusao = Date.valueOf(usuario_exclusao);
     }
 
     @Basic
@@ -134,12 +130,12 @@ public class Usuarios implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuarios that = (Usuarios) o;
-        return id == that.id &&
+        return id_usuario == that.id_usuario &&
                 Objects.equals(nome, that.nome) &&
                 Objects.equals(cpf,that.cpf) &&
                 Objects.equals(endereco,that.endereco) &&
                 Objects.equals(telefone,that.telefone) &&
-                Objects.equals(whatsApp,that.whatsApp) &&
+                Objects.equals(whatsapp,that.whatsapp) &&
                 Objects.equals(email,that.email) &&
                 Objects.equals(usuario_cadastro,that.usuario_cadastro) &&
                 Objects.equals(usuario_exclusao,that.usuario_exclusao) &&
@@ -150,12 +146,12 @@ public class Usuarios implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(
-            id,
+            id_usuario,
             nome,
             cpf,
             endereco,
             telefone,
-            whatsApp,
+            whatsapp,
             email,
             usuario_cadastro,
             usuario_exclusao,
