@@ -42,8 +42,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().loginPage("/public/sign-in")
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                ;
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         logger.info("Security configured.");
 
     }

@@ -5,17 +5,15 @@ import com.changenode.frisson.query.AutoresEntityQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
+
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
-@RequestMapping("/public/listarAutores")
 public class ListarAutoresController {
 
     @Autowired
@@ -26,10 +24,27 @@ public class ListarAutoresController {
         return autoresEntityQuery.findAll();
     }
 
-    @GetMapping
+    @ModelAttribute("buscaAutores")
+    public List<Autores> obterBuscaPorAutor(@RequestParam(value = "termo", required = false) String termo) {
+        return autoresEntityQuery.findByNomeOrSobrenomeOrDescricao(termo, termo, termo);
+    }
+
+    @RequestMapping(value = "/public/listarAutores", method = GET)
     public String listarAutores(Model model) {
         List<Autores> listaDeAutores = obterListaDeAutores();
         model.addAttribute("listaAutores", listaDeAutores);
         return "templates/listarAutores";
+    }
+
+    @RequestMapping(value = "/public/buscarAutores", method = POST)
+    public String buscarAutores(@ModelAttribute(name="termo") String termo, Model model) {
+        List<Autores> resultadoBusca;
+        if (termo != null && !termo.isEmpty()) {
+            resultadoBusca = obterBuscaPorAutor(termo);
+        } else {
+            resultadoBusca = Collections.emptyList(); // Trazer uma lista vazia caso não exista uma valor para 'termo'
+        }
+        model.addAttribute("buscaAutores", resultadoBusca);
+        return "templates/buscarAutores";
     }
 }
