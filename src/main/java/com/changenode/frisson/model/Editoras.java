@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Editoras {
 
     private Long id_editora;
-    private String descricao;
+    private String nome;
 
     @Id()
     @Column(name = "id_editora", nullable = false)
@@ -22,12 +22,12 @@ public class Editoras {
     }
 
     @Basic
-    @Column(name = "descricao", unique = true, nullable = false)
-    public String getDescricao() {
-        return descricao;
+    @Column(name = "nome", unique = true, nullable = false)
+    public String getNome() {
+        return nome;
     }
-    public void setDescricao(@NotNull String descricao) {
-        this.descricao = descricao.toUpperCase();
+    public void setNome(@NotNull String nome) {
+        this.nome = nome.toUpperCase();
     }
 
     @Override
@@ -36,12 +36,12 @@ public class Editoras {
         if (o == null || getClass() != o.getClass()) return false;
         Editoras that = (Editoras) o;
         return id_editora == that.id_editora    &&
-                Objects.equals(descricao, that.descricao)
+                Objects.equals(nome, that.nome)
                 ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_editora, descricao);
+        return Objects.hash(id_editora, nome);
     }
 }

@@ -15,6 +15,7 @@ public class Colaboradores{
     @Column(name = "id_colaborador", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_colaborador;
+    private String cargo;
     private String nome;
     private Long cpf;
     private String endereco;
@@ -28,12 +29,19 @@ public class Colaboradores{
     private Date colaborador_exclusao;
     private String observacao;
 
-
     public Long getId_colaborador() {
         return this.id_colaborador;
     }
     public void setId_colaborador(Long id_colaborador) {
         this.id_colaborador = id_colaborador;
+    }
+    @Basic
+    @Column(name = "cargo", nullable = false)
+    public String getCargo() {
+        return this.cargo;
+    }
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     @Basic
@@ -130,6 +138,7 @@ public class Colaboradores{
         if (o == null || getClass() != o.getClass()) return false;
         Colaboradores that = (Colaboradores) o;
         return id_colaborador == that.id_colaborador &&
+                Objects.equals(cargo, that.cargo) &&
                 Objects.equals(nome, that.nome) &&
                 Objects.equals(cpf,that.cpf) &&
                 Objects.equals(endereco,that.endereco) &&
@@ -146,6 +155,7 @@ public class Colaboradores{
     public int hashCode() {
         return Objects.hash(
                 id_colaborador,
+                cargo,
                 nome,
                 cpf,
                 endereco,
