@@ -22,13 +22,13 @@ public class AutoresController {
         Autores obj = new Autores();
         obj.setId_autor(UUID.fromString("517d99fe-db7d-467e-b3f2-be5ac8c41752"));
         model.addAttribute("autor", obj);
-        return "templates/formulario-autores";
+        return "templates/autores/formulario";
     }
 
     @PostMapping
     public String formCadastro(@ModelAttribute(name="autor") final Autores obj) {
         entityQuery.save(obj);
 
-        return "templates/confirmar-cadastro-de-autores";
+        return "templates/autores/confirmar-cadastro";
     }
 }

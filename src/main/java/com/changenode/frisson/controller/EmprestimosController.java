@@ -19,13 +19,13 @@ public class EmprestimosController {
     public String formCadastro(final Model model) {
         Emprestimos obj = new Emprestimos();
         model.addAttribute("emprestimo", obj);
-        return "templates/formulario-emprestimos";
+        return "templates/emprestimos/formulario";
     }
 
     @PostMapping
     public String formCadastro(@ModelAttribute(name="emprestimo") final Emprestimos obj) {
         entityQuery.save(obj);
 
-        return "templates/confirmar-cadastro-de-emprestimos";
+        return "templates/emprestimos/confirmar-cadastro";
     }
 }

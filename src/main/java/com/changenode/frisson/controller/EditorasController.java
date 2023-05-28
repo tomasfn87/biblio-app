@@ -21,13 +21,13 @@ public class EditorasController {
     public String formCadastro(final Model model) {
         Editoras obj = new Editoras();
         model.addAttribute("editora", obj);
-        return "templates/formulario-editoras";
+        return "templates/editoras/formulario";
     }
 
     @PostMapping
     public String formCadastro(@ModelAttribute(name="editora") final Editoras obj) {
         entityQuery.save(obj);
 
-        return "templates/confirmar-cadastro-de-editoras";
+        return "templates/editoras/confirmar-cadastro";
     }
 }
