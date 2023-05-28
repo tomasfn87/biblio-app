@@ -15,9 +15,12 @@
         </div>
         <div class="section w-75">
             <form th:action="@{/public/cadastrar-colaboradores}" th:object="${colaborador}" method="post">
-                <label for="colaborador-nome">Nome do colaborador</label><br>
+                <label for="colaborador-cargo">Cargo do colaborador</label><br>
                 <div class="mb-3 form-floating">
-                    <input id="colaborador-nome" type="text" autofocus th:field="*{nome}" class="form-control" placeholder="Exemplo colaborador"/><br/>
+                    <input id="colaborador-cargo" type="text" autofocus th:field="*{cargo}" class="form-control" placeholder="Exemplo cargo"/><br/>
+                </div>
+                <div class="mb-3 form-floating">
+                    <input id="colaborador-nome" type="text" autofocus th:field="*{nome}" class="form-control" placeholder="Exemplo nome"/><br/>
                 </div>
                 <label for="colaborador-cpf">CPF do colaborador</label><br>
                 <div class="mb-3 form-floating">

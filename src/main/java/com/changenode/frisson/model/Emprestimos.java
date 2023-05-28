@@ -3,8 +3,7 @@ package com.changenode.frisson.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
@@ -16,13 +15,13 @@ public class Emprestimos {
     private Long id_usuario;
     private Long id_colaborador;
     @DateTimeFormat
-    private Date data_reserva;
+    private Date emprestimo_reserva;
     @DateTimeFormat
-    private Date data_retirada;
+    private Date emprestimo_retirada;
     @DateTimeFormat
-    private Date data_devolucao;
+    private Date emprestimo_devolucao;
     @DateTimeFormat
-    private Date data_cancelamento;
+    private Date emprestimo_cancelamento;
     private String observacoes;
 
     @Id()
@@ -34,20 +33,14 @@ public class Emprestimos {
     public void setId_emprestimo(Long id_emprestimo) {
         this.id_emprestimo = id_emprestimo;
     }
-    public void setId_emprestimo(@NotNull Emprestimos emprestimo) {
-        this.id_emprestimo = emprestimo.getId_emprestimo();
-    }
 
     @Basic
     @Column(name = "id_exemplar", nullable = false)
     public Long getId_exemplar() {
         return id_exemplar;
     }
-    public void setId_exemplar(Long id_exemplar) {
-        this.id_exemplar = id_exemplar;
-    }
-    public void setId_exemplar(@NotNull Exemplares exemplar) {
-        this.id_exemplar = exemplar.getId_exemplar();
+    public void setId_exemplar(String id_exemplar) {
+        this.id_exemplar = Long.valueOf(id_exemplar);
     }
 
     @Basic
@@ -55,11 +48,8 @@ public class Emprestimos {
     public Long getId_usuario() {
         return id_usuario;
     }
-    public void setId_usuario(Long id_usuario) {
-        this.id_usuario = id_usuario;
-    }
-    public void setId_usuario(@NotNull Usuarios usuario) {
-        this.id_usuario = usuario.getId_usuario();
+    public void setId_usuario(String id_usuario) {
+        this.id_usuario = Long.valueOf(id_usuario);
     }
 
     @Basic
@@ -67,45 +57,49 @@ public class Emprestimos {
     public Long getId_colaborador() {
         return id_colaborador;
     }
-    public void setId_colaborador(Long id_colaborador) {
-        this.id_colaborador = id_colaborador;
+    public void setId_colaborador(String id_colaborador) {
+        this.id_colaborador = Long.valueOf(id_colaborador);
     }
-    public void setId_colaborador(@NotNull Colaboradores colaborador) { this.id_colaborador = colaborador.getId_colaborador(); }
 
     @Basic
-    @Column(name = "data_reserva", nullable = false)
+    @Column(name = "emprestimo_reserva", nullable = false)
     public Date getData_reserva() {
-        return data_reserva;
+        return emprestimo_reserva;
     }
-    public void setData_reserva(Date data_reserva) {
-        this.data_reserva = data_reserva;
+    public void setData_reserva(String emprestimo_reserva) {
+
+        if(!emprestimo_reserva.isBlank())
+            this.emprestimo_reserva = Date.valueOf(emprestimo_reserva);
     }
 
     @Basic
-    @Column(name = "data_retirada")
+    @Column(name = "emprestimo_retirada")
     public Date getData_retirada() {
-        return data_retirada;
+        return emprestimo_retirada;
     }
-    public void setData_retirada(Date data_retirada) {
-        this.data_retirada = data_retirada;
+    public void setData_retirada(String emprestimo_retirada) {
+        if(!emprestimo_retirada.isBlank())
+            this.emprestimo_retirada = Date.valueOf(emprestimo_retirada);
     }
 
     @Basic
-    @Column(name = "data_devolucao")
+    @Column(name = "emprestimo_devolucao")
     public Date getData_devolucao() {
-        return data_devolucao;
+        return emprestimo_devolucao;
     }
-    public void setData_devolucao(Date data_devolucao) {
-        this.data_devolucao = data_devolucao;
+    public void setData_devolucao(String emprestimo_devolucao) {
+        if(!emprestimo_devolucao.isBlank())
+            this.emprestimo_devolucao = Date.valueOf(emprestimo_devolucao);
     }
 
     @Basic
-    @Column(name = "data_cancelamento")
+    @Column(name = "emprestimo_cancelamento")
     public Date getData_cancelamento() {
-        return data_cancelamento;
+        return emprestimo_cancelamento;
     }
-    public void setData_cancelamento(Date data_cancelamento) {
-        this.data_cancelamento = data_cancelamento;
+    public void setData_cancelamento(String emprestimo_cancelamento) {
+        if(!emprestimo_cancelamento.isBlank())
+            this.emprestimo_cancelamento = Date.valueOf(emprestimo_cancelamento);
     }
 
     @Basic
@@ -123,14 +117,13 @@ public class Emprestimos {
         if (o == null || getClass() != o.getClass()) return false;
         Emprestimos that = (Emprestimos) o;
         return id_emprestimo == that.id_emprestimo    &&
-                Objects.equals(id_emprestimo, that.id_emprestimo) &&
                 Objects.equals(id_exemplar, that.id_exemplar) &&
                 Objects.equals(id_usuario, that.id_usuario) &&
                 Objects.equals(id_colaborador, that.id_colaborador) &&
-                Objects.equals(data_reserva, that.data_reserva) &&
-                Objects.equals(data_retirada, that.data_retirada) &&
-                Objects.equals(data_devolucao, that.data_devolucao) &&
-                Objects.equals(data_cancelamento, that.data_cancelamento) &&
+                Objects.equals(emprestimo_reserva, that.emprestimo_reserva) &&
+                Objects.equals(emprestimo_retirada, that.emprestimo_retirada) &&
+                Objects.equals(emprestimo_devolucao, that.emprestimo_devolucao) &&
+                Objects.equals(emprestimo_cancelamento, that.emprestimo_cancelamento) &&
                 Objects.equals(observacoes, that.observacoes)
                 ;
     }
@@ -142,10 +135,10 @@ public class Emprestimos {
                 id_exemplar,
                 id_usuario,
                 id_colaborador,
-                data_reserva,
-                data_retirada,
-                data_devolucao,
-                data_cancelamento,
+                emprestimo_reserva,
+                emprestimo_retirada,
+                emprestimo_devolucao,
+                emprestimo_cancelamento,
                 observacoes
         );
     }
