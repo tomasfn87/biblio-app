@@ -19,13 +19,13 @@ public class UsuariosController {
     public String formCadastro(final Model model) {
         Usuarios obj = new Usuarios();
         model.addAttribute("usuario", obj);
-        return "templates/formulario-usuarios";
+        return "templates/usuarios/formulario";
     }
 
     @PostMapping
     public String formCadastro(@ModelAttribute(name="usuario") final Usuarios obj) {
         entityQuery.save(obj);
 
-        return "templates/confirmar-cadastro-de-usuarios";
+        return "templates/usuarios/confirmar-cadastro";
     }
 }

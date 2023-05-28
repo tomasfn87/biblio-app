@@ -3,7 +3,7 @@ package com.changenode.frisson.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
@@ -25,27 +25,26 @@ public class Exemplares {
     public Long getId_exemplar() {
         return id_exemplar;
     }
-    public void setId_exemplar(Long id_exemplar) {
-        this.id_exemplar = id_exemplar;
-    }
+    public void setId_exemplar(Long id_exemplar) { this.id_exemplar = id_exemplar; }
 
     @Basic
     @Column(name = "id_livro", nullable = false)
     public Long getId_livro() {
         return id_livro;
     }
-    public void setId_livro(Long id_livro) {
-        this.id_livro = id_livro;
+    public void setId_livro(String id_livro) {
+        if(!id_livro.isBlank())
+            this.id_livro = Long.valueOf(id_livro);
     }
-    public void setId_livro(Livros livro) {this.id_livro = livro.getId_livro();}
 
     @Basic
     @Column(name = "exemplar_cadastro")
     public Date getExemplar_cadastro() {
         return exemplar_cadastro;
     }
-    public void setExemplar_cadastro(Date exemplar_cadastro) {
-        this.exemplar_cadastro = exemplar_cadastro;
+    public void setExemplar_cadastro(String exemplar_cadastro) {
+        if(!exemplar_cadastro.isBlank())
+        this.exemplar_cadastro = Date.valueOf(exemplar_cadastro);
     }
 
     @Basic
@@ -53,17 +52,21 @@ public class Exemplares {
     public Date getExemplar_exclusao() {
         return exemplar_exclusao;
     }
-    public void setExemplar_exclusao(Date exemplar_exclusao) {
-        this.exemplar_exclusao = exemplar_exclusao;
+    public void setExemplar_exclusao(String exemplar_exclusao) {
+        if(!exemplar_exclusao.isBlank())
+            this.exemplar_exclusao = Date.valueOf(exemplar_exclusao);
     }
 
     @Basic
     @Column(name = "condicoes")
-    public CondicoesEnum getCondicoes() {
-        return condicoes;
+    public int getCondicoes() {
+        return condicoes.ordinal();
     }
-    public void setCondicoes(CondicoesEnum condicoes) {
-        this.condicoes = condicoes;
+    public void setCondicoes(String condicoes) {
+        if(!condicoes.isBlank())
+            this.condicoes = CondicoesEnum.valueOf(condicoes);
+        else
+            this.condicoes = CondicoesEnum.nao_declarado;
     }
 
     @Basic

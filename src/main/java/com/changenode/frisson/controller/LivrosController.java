@@ -19,13 +19,13 @@ public class LivrosController {
     public String formCadastro(final Model model) {
         Livros obj = new Livros();
         model.addAttribute("livro", obj);
-        return "templates/formulario-livros";
+        return "templates/livros/formulario";
     }
 
     @PostMapping
     public String formCadastro(@ModelAttribute(name="livro") final Livros obj) {
         entityQuery.save(obj);
 
-        return "templates/confirmar-cadastro-de-livros";
+        return "templates/livros/confirmar-cadastro";
     }
 }

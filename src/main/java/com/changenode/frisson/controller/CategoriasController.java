@@ -21,13 +21,13 @@ public class CategoriasController {
     public String formCadastro(final Model model) {
         Categorias obj = new Categorias();
         model.addAttribute("categoria", obj);
-        return "templates/formulario-categorias";
+        return "templates/categorias/formulario";
     }
 
     @PostMapping
     public String formCadastro(@ModelAttribute(name="categoria") final Categorias obj) {
         entityQuery.save(obj);
 
-        return "templates/confirmar-cadastro-de-categorias";
+        return "templates/categorias/confirmar-cadastro";
     }
 }

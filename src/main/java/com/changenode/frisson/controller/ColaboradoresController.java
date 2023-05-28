@@ -19,13 +19,13 @@ public class ColaboradoresController {
     public String formCadastro(final Model model) {
         Colaboradores obj = new Colaboradores();
         model.addAttribute("colaborador", obj);
-        return "templates/formulario-colaboradores";
+        return "templates/colaboradoeres/formulario";
     }
 
     @PostMapping
     public String formCadastro(@ModelAttribute(name="colaborador") final Colaboradores obj) {
         entityQuery.save(obj);
 
-        return "templates/confirmar-cadastro-de-colaboradores";
+        return "templates/colaboradores/confirmar-cadastro";
     }
 }
