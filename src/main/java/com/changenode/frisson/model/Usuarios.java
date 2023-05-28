@@ -63,7 +63,6 @@ public class Usuarios implements Serializable {
     }
 
     public void setEndereco(String endereco) {
-        //this.endereco = new Enderecos(endereco).toString();
         this.endereco = endereco;
     }
 
@@ -74,7 +73,7 @@ public class Usuarios implements Serializable {
     }
     public void setTelefone(String telefone) {
         if(!telefone.isBlank())
-            this.telefone = telefone;//Long.valueOf(telefone);
+            this.telefone = telefone;
     }
 
     @Basic
@@ -84,7 +83,7 @@ public class Usuarios implements Serializable {
     }
     public void setWhatsapp(String whatsapp) {
         if(!whatsapp.isBlank())
-            this.whatsapp = whatsapp;//Long.valueOf(whatsapp);
+            this.whatsapp = whatsapp;
     }
 
     @Basic

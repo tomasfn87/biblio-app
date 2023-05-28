@@ -4,7 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 @Entity
@@ -47,7 +47,8 @@ public class Livros {
         return isbn;
     }
     public void setIsbn(String isbn) {
-        this.isbn = (isbn==null ? null : isbn.toUpperCase());
+        if(!isbn.isBlank())
+            this.isbn = isbn.toUpperCase();
     }
 
     @Basic
@@ -64,8 +65,9 @@ public class Livros {
     public Integer getAno() {
         return ano;
     }
-    public void setAno(Integer ano) {
-        this.ano = ano;
+    public void setAno(String ano) {
+        if(!ano.isBlank())
+            this.ano = Integer.valueOf(ano);
     }
 
     @Basic
@@ -73,19 +75,20 @@ public class Livros {
     public Integer getEdicao() {
         return edicao;
     }
-    public void setEdicao(Integer edicao) {
-        this.edicao = edicao;
+    public void setEdicao(String edicao) {
+        if(!edicao.isBlank())
+            this.edicao = Integer.valueOf(edicao);
     }
 
     @Basic
-    @Column(name = "editora")
+    @Column(name = "id_editora")
     public Long getId_editora() {
         return id_editora;
     }
-    public void setId_editora(Long id_editora) {
-        this.id_editora = id_editora;
+    public void setId_editora(String id_editora) {
+        if(!id_editora.isBlank())
+            this.id_editora = Long.valueOf(id_editora);
     }
-    public void setId_editor(Editoras editora) {this.id_editora = editora.getId_editora();}
 
     @Basic
     @Column(name = "assuntos")
@@ -93,9 +96,9 @@ public class Livros {
         return assuntos;
     }
     public void setAssuntos(String assuntos) {
-        this.assuntos = new CamposMultiplos(assuntos, ";'").toString();
+        if(!assuntos.isBlank())
+            this.assuntos = new CamposMultiplos(assuntos, ";'").toString();
     }
-    public void setAssuntos(CamposMultiplos assuntos){ this.assuntos = assuntos.toString(); }
 
     @Basic
     @Column(name = "palavras_chaves")
@@ -103,17 +106,18 @@ public class Livros {
         return palavras_chaves;
     }
     public void setPalavras_chaves(String palavras_chaves) {
-        this.palavras_chaves = new CamposMultiplos(palavras_chaves, ";'").toString();
+        if(!palavras_chaves.isBlank())
+            this.palavras_chaves = new CamposMultiplos(palavras_chaves, ";'").toString();
     }
-    public void setPalavras_chaves(CamposMultiplos palavras_chaves){ this.palavras_chaves = palavras_chaves.toString(); }
 
     @Basic
     @Column(name = "prazo")
     public Integer getPrazo() {
         return prazo;
     }
-    public void setPrazo(Integer prazo) {
-        this.prazo = prazo;
+    public void setPrazo(String prazo) {
+        if(!prazo.isBlank())
+            this.prazo = Integer.valueOf(prazo);
     }
 
     @Basic
@@ -121,8 +125,9 @@ public class Livros {
     public Date getLivro_registro() {
         return livro_registro;
     }
-    public void setLivro_registro(Date livro_registro) {
-        this.livro_registro = livro_registro;
+    public void setLivro_registro(String livro_registro) {
+        if(!livro_registro.isBlank())
+            this.livro_registro = Date.valueOf(livro_registro);
     }
 
     @Basic
@@ -130,8 +135,9 @@ public class Livros {
     public Date getLivro_exclusao() {
         return livro_exclusao;
     }
-    public void setLivro_exclusao(Date livro_exclusao) {
-        this.livro_exclusao = livro_exclusao;
+    public void setLivro_exclusao(String livro_exclusao) {
+        if(!livro_exclusao.isBlank())
+            this.livro_exclusao = Date.valueOf(livro_exclusao);
     }
 
     @Basic
