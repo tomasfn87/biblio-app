@@ -11,10 +11,12 @@ import java.util.Objects;
 @Entity
 @Table(name = "colaboradores", schema = "public")
 public class Colaboradores{
+
+    //nome da coluna está como id_usuario por problema de dependência de chaves estrangeiras. Não mexer
     @Id
-    @Column(name = "id_colaborador", nullable = false, unique = true)
+    @Column(name = "id_usuario", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_colaborador;
+    private Long id_usuario;
     private String cargo;
     private String nome;
     private Long cpf;
@@ -29,11 +31,11 @@ public class Colaboradores{
     private Date colaborador_exclusao;
     private String observacao;
 
-    public Long getId_colaborador() {
-        return this.id_colaborador;
+    public Long getId_usuario() {
+        return this.id_usuario;
     }
-    public void setId_colaborador(Long id_colaborador) {
-        this.id_colaborador = id_colaborador;
+    public void setId_usuario(Long id_usuario) {
+        this.id_usuario = id_usuario;
     }
     @Basic
     @Column(name = "cargo", nullable = false)
@@ -41,7 +43,8 @@ public class Colaboradores{
         return this.cargo;
     }
     public void setCargo(String cargo) {
-        this.cargo = cargo;
+        if(!cargo.isBlank())
+            this.cargo = cargo.toUpperCase();
     }
 
     @Basic
@@ -50,7 +53,8 @@ public class Colaboradores{
         return nome;
     }
     public void setNome(@NotNull String nome) {
-        this.nome = nome.toUpperCase();
+        if(!nome.isBlank())
+            this.nome = nome.toUpperCase();
     }
 
     @Basic
@@ -70,7 +74,6 @@ public class Colaboradores{
     }
 
     public void setEndereco(String endereco) {
-        //this.endereco = new Enderecos(endereco).toString();
         this.endereco = endereco;
     }
 
@@ -81,7 +84,7 @@ public class Colaboradores{
     }
     public void setTelefone(String telefone) {
         if(!telefone.isBlank())
-            this.telefone = telefone;//Long.valueOf(telefone);
+            this.telefone = telefone;
     }
 
     @Basic
@@ -106,19 +109,20 @@ public class Colaboradores{
 
     @Basic
     @Column(name = "colaborador_cadastro", nullable = false)
-    public Date getUsuario_cadastro() {
+    public Date getColaborador_cadastro() {
         return colaborador_cadastro;
     }
-    public void setUsuario_cadastro(String colaborador_cadastro) {
-        this.colaborador_cadastro = Date.valueOf(colaborador_cadastro);
+    public void setColaborador_cadastro(String colaborador_cadastro) {
+        if(!colaborador_cadastro.isBlank())
+            this.colaborador_cadastro = Date.valueOf(colaborador_cadastro);
     }
 
     @Basic
     @Column(name = "colaborador_exclusao")
-    public Date getUsuario_exclusao() {
+    public Date getColaborador_exclusao() {
         return colaborador_exclusao;
     }
-    public void setUsuario_exclusao(String colaborador_exclusao) {
+    public void setColaborador_exclusao(String colaborador_exclusao) {
         if(!colaborador_exclusao.isBlank())
             this.colaborador_exclusao = Date.valueOf(colaborador_exclusao);
     }
@@ -137,7 +141,7 @@ public class Colaboradores{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Colaboradores that = (Colaboradores) o;
-        return id_colaborador == that.id_colaborador &&
+        return id_usuario == that.id_usuario &&
                 Objects.equals(cargo, that.cargo) &&
                 Objects.equals(nome, that.nome) &&
                 Objects.equals(cpf,that.cpf) &&
@@ -154,7 +158,7 @@ public class Colaboradores{
     @Override
     public int hashCode() {
         return Objects.hash(
-                id_colaborador,
+                id_usuario,
                 cargo,
                 nome,
                 cpf,

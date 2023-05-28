@@ -1,4 +1,4 @@
-package com.changenode.frisson.model;
+package com.changenode.frisson.enums;
 
 public enum LogradouroEnum {
 

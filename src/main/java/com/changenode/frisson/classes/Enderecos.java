@@ -1,6 +1,8 @@
-package com.changenode.frisson.model;
+package com.changenode.frisson.classes;
 
-import javax.persistence.*;
+import com.changenode.frisson.enums.LogradouroEnum;
+import com.changenode.frisson.enums.UFEnum;
+
 import java.util.Objects;
 import java.util.regex.PatternSyntaxException;
 
@@ -18,16 +20,16 @@ public class Enderecos {
     }
 
     public Enderecos(String end) {
-        CamposMultiplos enderecos = new CamposMultiplos(end, ", ");
+        CamposMultiplos enderecos = new CamposMultiplos(end, "; ");
         try{
-            tipo = enderecos.getUnidade(0);
+            setTipo(enderecos.getUnidade(0));
             logradouro = enderecos.getUnidade(1);
-            numero = Integer.getInteger(enderecos.getUnidade(2));
+            setNumero(enderecos.getUnidade(2));
             complemento = enderecos.getUnidade(3);
             bairro = enderecos.getUnidade(4);
             municipio = enderecos.getUnidade(5);
-            estado = enderecos.getUnidade(6);
-            cep = Integer.getInteger(enderecos.getUnidade(7));
+            setEstado(enderecos.getUnidade(6));
+            setCep(enderecos.getUnidade(7));
         }catch (IndexOutOfBoundsException e){
             System.out.println("Número de campos inferiores ao necessário.\n");
         }catch (SecurityException e){
@@ -43,10 +45,11 @@ public class Enderecos {
         return tipo;
     }
     public void setTipo(LogradouroEnum tipo) {
-        this.tipo = tipo.getTipo();
+        this.tipo = tipo.name();
     }
     public void setTipo(String tipo) {
-        this.tipo = LogradouroEnum.valueOf(tipo).toString();
+        if(!tipo.isBlank())
+            this.tipo = LogradouroEnum.valueOf(tipo).name();
     }
 
     public String getLogradouro() {
@@ -61,6 +64,10 @@ public class Enderecos {
     }
     public void setNumero(Integer numero) {
         this.numero = numero;
+    }
+    public void setNumero(String numero) {
+        if(!numero.isBlank() && !numero.isEmpty())
+            this.numero = Integer.valueOf(numero);
     }
 
     public String getComplemento() {
@@ -86,10 +93,11 @@ public class Enderecos {
         return estado;
     }
     public void setEstado(UFEnum estado) {
-        this.estado = estado.getUf();
+        this.estado = estado.name();
     }
     public void setEstado(String estado) {
-        this.estado = UFEnum.valueOf(estado).toString();
+        if(!estado.isBlank())
+            this.estado = UFEnum.valueOf(estado).name();
     }
 
     public Integer getCep() {
@@ -97,6 +105,10 @@ public class Enderecos {
     }
     public void setCep(Integer cep) {
         this.cep = cep;
+    }
+    public void setCep(String cep) {
+        if(!cep.isBlank() && !cep.isEmpty())
+            this.cep = Integer.valueOf(cep);
     }
 
     @Override
@@ -132,14 +144,14 @@ public class Enderecos {
     // TODO: 21/05/2023
     @Override
     public String toString (){
-        return String.join(", ",
+        return String.join("; ",
                 tipo,
                 logradouro,
-                numero.toString(),
+                (numero==null?"":numero.toString()),
                 complemento,
                 bairro,
                 municipio,
                 estado,
-                "["+cep+"]");
+                "["+(cep==null?"":cep.toString())+"]");
     }
 }
