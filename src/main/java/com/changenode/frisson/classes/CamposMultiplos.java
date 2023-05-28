@@ -1,4 +1,4 @@
-package com.changenode.frisson.model;
+package com.changenode.frisson.classes;
 
 import java.util.List;
 

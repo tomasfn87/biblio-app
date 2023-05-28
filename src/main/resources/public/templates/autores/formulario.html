@@ -15,25 +15,31 @@
         </div>
         <div class="section w-75">
             <form th:action="@{/public/cadastrar-autores}" th:object="${autor}" method="post">
-                <label for="autor-nome">Nome do autor</label><br>
-                <div class="mb-3 form-floating">
-                    <input id="autor-nome" type="text" autofocus th:field="*{nome}" class="form-control" placeholder="Exemplo autor"/><br/>
-                </div>
-                <label for="autor-sobrenome">Sobrenome do autor</label><br>
-                <div class="mb-3 form-floating">
-                    <input id="autor-sobrenome" type="text" th:field="*{sobrenome}" class="form-control" placeholder="Exemplo sobrenome"/><br/>
-                </div>
-                <label for="autor-descricao">Descrição</label><br>
-                <div class="mb-3 form-floating">
-                    <input id="autor-descricao" type="text" th:field="*{descricao}"  class="form-control" placeholder="Exemplo descrição"/><br/>
-                </div>
+                <fieldset>
+                    <legend>Autor</legend>
+                    <label for="autor-nome">Nome do autor</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="autor-nome" type="text" autofocus th:field="*{nome}" class="form-control" placeholder="Exemplo autor" required/><br/>
+                    </div>
+                    <label for="autor-sobrenome">Sobrenome do autor</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="autor-sobrenome" type="text" th:field="*{sobrenome}" class="form-control" placeholder="Exemplo sobrenome" required/><br/>
+                    </div>
+                    <label for="autor-descricao">Descrição</label><br>
+                    <div class="mb-3 form-floating">
+                        <textarea id="autor-descricao" th:field="*{descricao}"  class="form-control">Digite aqui a descrição do autor</textarea><br/>
+                    </div>
+                </fieldset>
                 <div class="d-flex justify-content-center">
                     <button class="btn btn-primary" type='submit'>Salvar
+                    </button>
+                    <button class="btn btn-primary" type='reset'>Limpar
                     </button>
                 </div>
             </form>
         </div>
     </div>
+    <a href="/" th:href="@{/}">voltar ao início</a>
 </section>
 </body>
 </html>

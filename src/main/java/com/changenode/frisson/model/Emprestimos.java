@@ -40,7 +40,8 @@ public class Emprestimos {
         return id_exemplar;
     }
     public void setId_exemplar(String id_exemplar) {
-        this.id_exemplar = Long.valueOf(id_exemplar);
+        if(!id_exemplar.isBlank())
+            this.id_exemplar = Long.valueOf(id_exemplar);
     }
 
     @Basic
@@ -49,7 +50,8 @@ public class Emprestimos {
         return id_usuario;
     }
     public void setId_usuario(String id_usuario) {
-        this.id_usuario = Long.valueOf(id_usuario);
+        if(!id_usuario.isBlank())
+            this.id_usuario = Long.valueOf(id_usuario);
     }
 
     @Basic
@@ -58,46 +60,46 @@ public class Emprestimos {
         return id_colaborador;
     }
     public void setId_colaborador(String id_colaborador) {
-        this.id_colaborador = Long.valueOf(id_colaborador);
+        if(!id_colaborador.isBlank())
+            this.id_colaborador = Long.valueOf(id_colaborador);
     }
 
     @Basic
     @Column(name = "emprestimo_reserva", nullable = false)
-    public Date getData_reserva() {
+    public Date getEmprestimo_reserva() {
         return emprestimo_reserva;
     }
-    public void setData_reserva(String emprestimo_reserva) {
-
+    public void setEmprestimo_reserva(String emprestimo_reserva) {
         if(!emprestimo_reserva.isBlank())
             this.emprestimo_reserva = Date.valueOf(emprestimo_reserva);
     }
 
     @Basic
     @Column(name = "emprestimo_retirada")
-    public Date getData_retirada() {
+    public Date getEmprestimo_retirada() {
         return emprestimo_retirada;
     }
-    public void setData_retirada(String emprestimo_retirada) {
+    public void setEmprestimo_retirada(String emprestimo_retirada) {
         if(!emprestimo_retirada.isBlank())
             this.emprestimo_retirada = Date.valueOf(emprestimo_retirada);
     }
 
     @Basic
     @Column(name = "emprestimo_devolucao")
-    public Date getData_devolucao() {
+    public Date getEmprestimo_devolucao() {
         return emprestimo_devolucao;
     }
-    public void setData_devolucao(String emprestimo_devolucao) {
+    public void setEmprestimo_devolucao(String emprestimo_devolucao) {
         if(!emprestimo_devolucao.isBlank())
             this.emprestimo_devolucao = Date.valueOf(emprestimo_devolucao);
     }
 
     @Basic
     @Column(name = "emprestimo_cancelamento")
-    public Date getData_cancelamento() {
+    public Date getEmprestimo_cancelamento() {
         return emprestimo_cancelamento;
     }
-    public void setData_cancelamento(String emprestimo_cancelamento) {
+    public void setEmprestimo_cancelamento(String emprestimo_cancelamento) {
         if(!emprestimo_cancelamento.isBlank())
             this.emprestimo_cancelamento = Date.valueOf(emprestimo_cancelamento);
     }

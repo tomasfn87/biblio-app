@@ -4,21 +4,21 @@
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <title>Confirmação de Cadastro de Usuarios</title>
+    <title>Confirmação de Cadastro de Empréstimos</title>
 </head>
 <body>
     <section layout:fragment="content">
         <h1>Dados enviados pelo usuario:</h1>
 
-        <p>ID Empréstimo: <b th:text="${emprestimo.id_emprestimo"/></p>
-        <p>ID Exemplar: <b th:text="${emprestimo.id_exemplar"/></p>
-        <p>ID Usuário: <b th:text="${emprestimo.id_usuario"/></p>
-        <p>ID Colaborador: <b th:text="${emprestimo.id_colaborador"/></p>
-        <p>Data da reserva: <b th:text="${emprestimo.emprestimo_reserva"/></p>
-        <p>Data da retirada: <b th:text="${emprestimo.emprestimo_retirada"/></p>
-        <p>Data da devolução: <b th:text="${emprestimo.emprestimo_devolucao"/></p>
-        <p>Data do cancelamento: <b th:text="${emprestimo.emprestimo_cancelamento"/></p>
-        <p>observação: <b th:text="${emprestimo.observacoes"/></p>
+        <p>ID Empréstimo: <b th:text="${emprestimo.id_emprestimo}"/></p>
+        <p>ID Exemplar: <b th:text="${emprestimo.id_exemplar}"/></p>
+        <p>ID Usuário: <b th:text="${emprestimo.id_usuario}"/></p>
+        <p>ID Colaborador: <b th:text="${emprestimo.id_colaborador}"/></p>
+        <p>Data da reserva: <b th:text="${emprestimo.emprestimo_reserva}"/></p>
+        <p>Data da retirada: <b th:text="${emprestimo.emprestimo_retirada}"/></p>
+        <p>Data da devolução: <b th:text="${emprestimo.emprestimo_devolucao}"/></p>
+        <p>Data do cancelamento: <b th:text="${emprestimo.emprestimo_cancelamento}"/></p>
+        <p>observação: <b th:text="${emprestimo.observacoes}"/></p>
 
         <a href="/" th:href="@{/}">voltar ao início</a>
     </section>

@@ -102,7 +102,8 @@ public class Usuarios implements Serializable {
         return usuario_cadastro;
     }
     public void setUsuario_cadastro(String usuario_cadastro) {
-        this.usuario_cadastro = Date.valueOf(usuario_cadastro);
+        if(!usuario_cadastro.isBlank())
+            this.usuario_cadastro = Date.valueOf(usuario_cadastro);
     }
 
     @Basic

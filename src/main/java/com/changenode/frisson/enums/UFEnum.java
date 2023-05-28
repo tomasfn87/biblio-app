@@ -1,4 +1,4 @@
-package com.changenode.frisson.model;
+package com.changenode.frisson.enums;
 
 public enum UFEnum {
 
@@ -9,6 +9,7 @@ public enum UFEnum {
     BA("BA"),
     CE("CE"),
     ES("ES"),
+    DF("DF"),
     GO("GO"),
     MA("MA"),
     MG("MG"),

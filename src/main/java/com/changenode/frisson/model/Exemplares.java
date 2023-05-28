@@ -1,5 +1,6 @@
 package com.changenode.frisson.model;
 
+import com.changenode.frisson.enums.CondicoesEnum;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
