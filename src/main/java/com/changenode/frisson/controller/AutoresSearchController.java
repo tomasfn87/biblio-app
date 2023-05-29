@@ -1,7 +1,7 @@
 package com.changenode.frisson.controller;
 
 import com.changenode.frisson.model.Autores;
-import com.changenode.frisson.query.AutoresEntityQuery;
+import com.changenode.frisson.query.AutoresQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,30 +11,30 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-public class ListarAutoresController {
+public class AutoresSearchController {
 
     @Autowired
-    AutoresEntityQuery autoresEntityQuery;
+    AutoresQuery autoresQuery;
 
     public List<Autores> obterListaDeAutores() {
-        return autoresEntityQuery.findAll();
+        return autoresQuery.findAll();
     }
 
     public List<Autores> obterBuscaPorAutor(String termo) {
-        return autoresEntityQuery.
+        return autoresQuery.
                 findByNomeContainingIgnoreCaseOrSobrenomeContainingIgnoreCaseOrDescricaoContainingIgnoreCase(
                         termo, termo, termo);
     }
 
-    @GetMapping(value = "/public/listarAutores")
+    @GetMapping("/public/buscar-autores")
     public String listarAutores(Model model) {
-        model.addAttribute("listaAutores", obterListaDeAutores());
-        return "templates/listarAutores";
+        model.addAttribute("buscaAutores", obterListaDeAutores());
+        return "templates/autores/busca";
     }
 
-    @PostMapping(value = "/public/listarAutores")
+    @PostMapping("/public/buscar-autores")
     public String buscarAutores(HttpServletRequest request, Model model) {
-        model.addAttribute("listaAutores", obterBuscaPorAutor(request.getParameter("termo")));
-        return "templates/listarAutores";
+        model.addAttribute("buscaAutores", obterBuscaPorAutor(request.getParameter("termo")));
+        return "templates/autores/busca";
     }
 }

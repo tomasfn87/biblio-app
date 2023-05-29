@@ -17,18 +17,59 @@
                     </div><a href="/secure.html" th:href="@{/secure}">Perfil</a>
                 </div>
                 <div sec:authorize="!isAuthenticated()">
-                    <a href="/identity/sign-in.html" th:href="@{/public/sign-in}">Entrar
-                    </a> | <a href="/identity/create-account.html" th:href="@{/public/create-account}">
-                    Criar Conta</a>
+                    <a href="/identity/sign-in.html" th:href="@{/public/sign-in}">
+                        Entrar</a> |
+                    <a href="/identity/create-account.html" th:href="@{/public/create-account}">
+                        Criar Conta</a>
                 </div>
-                <p>Bem vindo!</p>
-
-                <a href="/cadastrarAutores" th:href="@{/public/cadastrarAutores}">
-                    Cadastrar autores</a>
-                <br>
-                <a href="/listarAutores" th:href="@{/public/listarAutores}">
-                    Listar e buscar autores</a>
-
+                <div id="autores">
+                   <a href="/cadastrar-autores" th:href="@{/public/cadastrar-autores}">
+                        Cadastrar autores</a> |
+                    <a href="/buscar-autores" th:href="@{/public/buscar-autores}">
+                        Buscar autores</a>
+                </div>
+                <div id="categorias">
+                    <a href="/cadastrar-categorias" th:href="@{/public/cadastrar-categorias}">
+                        Cadastrar categorias</a> |
+                    <a href="/buscar-categorias" th:href="@{/public/buscar-categorias}">
+                        Buscar categorias</a>
+                </div>
+                <div id="editoras">
+                    <a href="/cadastrar-editoras" th:href="@{/public/cadastrar-editoras}">
+                        Cadastrar editoras</a> |
+                    <a href="/buscar-editoras" th:href="@{/public/buscar-editoras}">
+                        Buscar editoras</a>
+                </div>
+                <div id="emprestimos">
+                    <a href="/cadastrar-emprestimos" th:href="@{/public/cadastrar-emprestimos}">
+                        Cadastrar empréstimos</a> |
+                    <a href="/buscar-emprestimos" th:href="@{/public/buscar-emprestimos}">
+                        Buscar empréstimos</a>
+                </div>
+                <div id="exemplares">
+                    <a href="/cadastrar-exemplares" th:href="@{/public/cadastrar-exemplares}">
+                        Cadastrar exemplares</a> |
+                    <a href="/buscar-exemplares" th:href="@{/public/buscar-exemplares}">
+                        Buscar exemplares</a>
+                </div>
+                <div id="livros">
+                    <a href="/cadastrar-livros" th:href="@{/public/cadastrar-livros}">
+                        Cadastrar livros</a> |
+                    <a href="/buscar-livros" th:href="@{/public/buscar-livros}">
+                        Buscar livros</a>
+                </div>
+                <div id="usuarios">
+                    <a href="/cadastrar-usuarios" th:href="@{/public/cadastrar-usuarios}">
+                        Cadastrar usuários</a> |
+                    <a href="/buscar-usuarios" th:href="@{/public/buscar-usuarios}">
+                        Buscar usuários</a>
+                </div>
+                <div id="colaboradores">
+                    <a href="/cadastrar-colaboradores" th:href="@{/public/cadastrar-colaboradores}">
+                        Cadastrar colaboradores</a> |
+                    <a href="/buscar-colaboradores" th:href="@{/public/buscar-colaboradores}">
+                        Buscar colaboradores</a>
+                </div>
             </div>
         </section>
         <script src="/assets/js/popper.min.js"></script>

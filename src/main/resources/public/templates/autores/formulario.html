@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{layout.html}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Cadastro de Autores</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class='container-sm d-flex flex-wrap justify-content-center'>
+        <div class="section text-center w-75">
+            <h1>Cadastro de Autores</h1>
+        </div>
+        <div class="section w-75">
+            <form th:action="@{/public/cadastrar-autores}" th:object="${autor}" method="post">
+                <fieldset>
+                    <legend>Autor</legend>
+                    <label for="autor-nome">Nome do autor</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="autor-nome" type="text" autofocus th:field="*{nome}" class="form-control" placeholder="Exemplo autor" required/><br/>
+                    </div>
+                    <label for="autor-sobrenome">Sobrenome do autor</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="autor-sobrenome" type="text" th:field="*{sobrenome}" class="form-control" placeholder="Exemplo sobrenome" required/><br/>
+                    </div>
+                    <label for="autor-descricao">Descrição</label><br>
+                    <div class="mb-3 form-floating">
+                        <textarea id="autor-descricao" th:field="*{descricao}"  class="form-control">Digite aqui a descrição do autor</textarea><br/>
+                    </div>
+                </fieldset>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary" type='submit'>Salvar
+                    </button>
+                    <button class="btn btn-primary" type='reset'>Limpar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <a href="/" th:href="@{/}">voltar ao início</a>
+</section>
+</body>
+</html>

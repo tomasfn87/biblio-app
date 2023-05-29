@@ -5,7 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface AutoresEntityQuery extends JpaRepository<Autores, Long> {
+public interface AutoresQuery extends JpaRepository<Autores, Long> {
     List<Autores> findByNomeContainingIgnoreCaseOrSobrenomeContainingIgnoreCaseOrDescricaoContainingIgnoreCase(
             String nome, String sobrenome, String descricao);
 }
+

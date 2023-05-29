@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{layout.html}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <title>Confirmação de Cadastro de Livros</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <h1>Dados enviados pelo usuario:</h1>
+
+        <p>ID do livro: <b th:text="${livro.id_livro}"/></p>
+        <p>ISBN: <b th:text="${livro.isbn}"/></p>
+        <p>Título: <b th:text="${livro.titulo}"/></p>
+        <p>Ano: <b th:text="${livro.ano}"/></p>
+        <p>Edição: <b th:text="${livro.edicao}"/></p>
+        <p>ID da Editora: <b th:text="${livro.id_editora}"/></p>
+        <p>Assuntos: <b th:text="${livro.assuntos}"/></p>
+        <p>Palavras chaves: <b th:text="${livro.palavras_chaves}"/></p>
+        <p>Prazo de devolução (dias): <b th:text="${livro.prazo}"/></p>
+        <p>Data do registro: <b th:text="${livro.livro_registro}"/></p>
+        <p>Data da exclusão: <b th:text="${livro.livro_exclusao}"/></p>
+        <p>observação: <b th:text="${livro.observacoes}"/></p>
+
+        <a href="/" th:href="@{/}">voltar ao início</a>
+    </section>
+</body>
+</html>
