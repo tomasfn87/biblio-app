@@ -17,19 +17,19 @@
             <form th:action="@{/public/cadastrar-emprestimos}" th:object="${emprestimo}" method="post">
                 <label for="emprestimo-id-exemplar">Id do exemplar</label><br>
                 <div class="mb-3 form-floating">
-                    <input id="emprestimo-id-exemplar" type="number" autofocus th:field="*{id_exemplar}"  class="form-control" required/>
+                    <input id="emprestimo-id-exemplar" type="number" autofocus th:field="*{idExemplar}"  class="form-control" required/>
                     <input name="emprestimo-nome-exemplar" type="text" class="form-control"  placeholder="nome do exemplar"/>
                     <button class="btn btn-primary">Buscar</button><br/>
                 </div>
                 <label for="emprestimo-id-usuario">Id do usuário</label><br>
                 <div class="mb-3 form-floating">
-                    <input id="emprestimo-id-usuario" type="number" th:field="*{id_usuario}"  class="form-control" required/>
+                    <input id="emprestimo-id-usuario" type="number" th:field="*{idUsuario}"  class="form-control" required/>
                     <input name="emprestimo-nome-usuario" type="text" class="form-control"  placeholder="nome do usuário"/>
                     <button class="btn btn-primary">Buscar</button><br/>
                 </div>
                 <label for="emprestimo-id-colaborador">Id do colaborador</label><br>
                 <div class="mb-3 form-floating">
-                    <input id="emprestimo-id-colaborador" type="number" th:field="*{id_colaborador}"  class="form-control" required/>
+                    <input id="emprestimo-id-colaborador" type="number" th:field="*{idColaborador}"  class="form-control" required/>
                     <input name="emprestimo-nome-colaborador" type="text" class="form-control"  placeholder="nome do colaborador"/>
                     <button class="btn btn-primary">Buscar</button><br/>
                 </div>
@@ -37,19 +37,19 @@
                     <legend>Datas do empréstimo</legend>
                     <label for="emprestimo-data-reserva">Reserva</label><br>
                     <div class="mb-3 form-floating">
-                        <input id="emprestimo-data-reserva" type="date" th:field="*{emprestimo_reserva}" class="form-control"/><br/>
+                        <input id="emprestimo-data-reserva" type="date" th:field="*{emprestimoReserva}" class="form-control"/><br/>
                     </div>
                     <label for="emprestimo-data-retirada">Retirada</label><br>
                     <div class="mb-3 form-floating">
-                        <input id="emprestimo-data-retirada" type="date" th:field="*{emprestimo_retirada}" class="form-control"/><br/>
+                        <input id="emprestimo-data-retirada" type="date" th:field="*{emprestimoRetirada}" class="form-control"/><br/>
                     </div>
                     <label for="emprestimo-data-devolucao">Devolução</label><br>
                     <div class="mb-3 form-floating">
-                        <input id="emprestimo-data-devolucao" type="date" th:field="*{emprestimo_devolucao}" class="form-control"/><br/>
+                        <input id="emprestimo-data-devolucao" type="date" th:field="*{emprestimoDevolucao}" class="form-control"/><br/>
                     </div>
                     <label for="emprestimo-data-cancelamento">Cancelamento</label><br>
                     <div class="mb-3 form-floating">
-                        <input id="emprestimo-data-cancelamento" type="date" th:field="*{emprestimo_cancelamento}" class="form-control"/><br/>
+                        <input id="emprestimo-data-cancelamento" type="date" th:field="*{emprestimoCancelamento}" class="form-control"/><br/>
                     </div>
                 </fieldset>
                 <label for="emprestimo-observacoes">Observações</label><br>

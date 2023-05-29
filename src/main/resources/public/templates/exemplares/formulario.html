@@ -17,7 +17,7 @@
             <form th:action="@{/public/cadastrar-exemplares}" th:object="${exemplar}" method="post">
                 <label for="exemplar-id-livro">ID do Livro</label><br>
                 <div class="mb-3 form-floating">
-                    <input id="exemplar-id-livro" type="number" autofocus th:field="*{id_livro}"  required class="form-control"/>
+                    <input id="exemplar-id-livro" type="number" autofocus th:field="*{idLivro}"  required class="form-control"/>
                     <input name="emprestimo-nome-exemplar" type="number" autofocus class="form-control"  placeholder="nome do livro"/>
                     <button class="btn btn-primary">Buscar</button><br/>
                 </div>
@@ -25,16 +25,16 @@
                     <legend>Datas de registro</legend>
                     <label for="exemplar-cadastro">Cadastro</label><br>
                     <div class="mb-3 form-floating">
-                        <input id="exemplar-cadastro" type="date" th:field="*{exemplar_cadastro}" required class="form-control"/><br/>
+                        <input id="exemplar-cadastro" type="date" th:field="*{exemplarCadastro}" required class="form-control"/><br/>
                     </div>
                     <label for="exemplar-exclusao">Exclusão</label><br>
                     <div class="mb-3 form-floating">
-                        <input id="exemplar-exclusao" type="date" th:field="*{exemplar_exclusao}" class="form-control"/><br/>
+                        <input id="exemplar-exclusao" type="date" th:field="*{exemplarExclusao}" class="form-control"/><br/>
                     </div>
                 </fieldset>
                 <label for="exemplar-condicoes">Condições</label><br>
                 <div class="mb-3 form-floating">
-                    <select id="exemplar-condicoes" name="estado" class="form-contro" required>
+                    <select id="exemplar-condicoes" name="estado" class="form-control" required>
                         <option value="novo">Novo</option>
                         <option value="seminovo">Seminovo</option>
                         <option value="usado">Usado</option>
