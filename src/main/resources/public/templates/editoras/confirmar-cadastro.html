@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{layout.html}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <title>Confirmação de Cadastro de Editoras</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <h1>Dados enviados pelo usuário:</h1>
+
+        <p>id Editora: <b th:text="${editora.id_editora}"/></p>
+        <p>Nome: <b th:text="${editora.nome}"/></p>
+
+        <a href="/" th:href="@{/}">voltar ao início</a>
+    </section>
+</body>
+</html>

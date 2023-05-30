@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{layout.html}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <title>Confirmação de Cadastro de Exemplares</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <h1>Dados enviados pelo usuario:</h1>
+
+        <p>ID do exemplar: <b th:text="${exemplar.id_exemplar}"/></p>
+        <p>ID do livro: <b th:text="${exemplar.id_livro}"/></p>
+        <p>Data do cadastro: <b th:text="${exemplar.exemplar_cadastro}"/></p>
+        <p>Data do exclusão: <b th:text="${exemplar.exemplar_exclusao}"/></p>
+        <p>Condições: <b th:text="${exemplar.condicoes}"/></p>
+        <p>Observações: <b th:text="${exemplar.observacoes}"/></p>
+
+        <a href="/" th:href="@{/}">voltar ao início</a>
+    </section>
+</body>
+</html>

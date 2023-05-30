@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{layout.html}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Cadastro de Autores</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class='container-sm d-flex flex-wrap justify-content-center'>
+        <div class="section text-center w-75">
+            <h1>Cadastro de Usuarios</h1>
+        </div>
+        <div class="section w-75">
+            <form th:action="@{/public/cadastrar-usuarios}" th:object="${usuario}" method="post">
+                <fieldset>
+                    <legend>Dados pessoais</legend>
+                    <label for="usuario-nome">Nome do usuario</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-nome" type="text" autofocus th:field="*{nome}" class="form-control" placeholder="Nome completo" required/><br/>
+                    </div>
+                    <label for="usuario-cpf">CPF do usuario</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-cpf" type="number" th:field="*{cpf}" class="form-control" placeholder="Número do CPF" max="99999999999"/><br/>
+                    </div>
+                    <label for="usuario-endereco-tipo">Tipo do logradouro</label><br>
+                    <div class="mb-3 form-floating">
+                        <select id="usuario-endereco-tipo" name="tipo" class="form-control">
+                            <option value="RUA">Rua</option>
+                            <option value="AVENIDA">Av.</option>
+                            <option value="TRAVESSA">Travessa</option>
+                            <option value="VIA">Via</option>
+                            <option value="PRACA">Pç.</option>
+                            <option value="VILA">Vila</option>
+                            <option value="VIADUTO">Viaduto</option>
+                            <option value="RESIDENCIAL">Res.</option>
+                            <option value="PARQUE">Pq.</option>
+                            <option value="NUCLEO">Núcleo</option>
+                            <option value="CONDOMINIO">Cond.</option>
+                            <option value="CHACARA">Chac.</option>
+                            <option value="ALAMEDA">Alameda</option>
+                            <option value="VIELA">Viela</option>
+                            <option value="RODOVIA">Rod.</option>
+                            <option value="SITIO">St.</option>
+                            <option value="LOTEAMENTO">Lot.</option>
+                            <option value="OUTROS">..</option>
+                        </select><br>
+                    </div>
+                    <label for="usuario-endereco-logradouro">Logradouro</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-endereco-logradouro" name="logradouro" type="text" class="form-control" placeholder="Digite o nome da via"/><br/>
+                    </div>
+                    <label for="usuario-endereco-numero">Nº</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-endereco-numero" name="numero" type="number" class="form-control" placeholder="Número da residência" min="1" max="99999"/><br/>
+                    </div>
+                    <label for="usuario-endereco-complemento">Complemento</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-endereco-complemento" name="complemento" type="text" class="form-control" placeholder="Digite o complemente, se houver"/><br/>
+                    </div>
+                    <label for="usuario-endereco-bairro">Bairro</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-endereco-bairro" name="bairro" type="text" class="form-control" placeholder="Digite o bairro"/><br/>
+                    </div>
+                    <label for="usuario-endereco-cidade">Cidade</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-endereco-cidade" name="cidade" type="text" class="form-control" placeholder="Digite a cidade"/><br/>
+                    </div>
+                    <label for="usuario-estado">Estado</label><br>
+                    <div class="mb-3 form-floating">
+                        <select id="usuario-estado" name="estado" class="form-contro">
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="TO">Tocantins</option>
+                        </select><br>
+                    </div>
+                    <label for="usuario-endereco-cep">CEP</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-endereco-cep" name="cep" type="number" class="form-control" placeholder="00000000"
+                               text="Preencha no formado padrão 00000000" pattern="[0-9]{8}"/><br/>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Contato</legend>
+                    <label for="usuario-telefone">Telefone</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-telefone" type="text" pattern="\([0-9]{2}\)[0-9]{4}-[0-9]{4}" th:field="*{telefone}"
+                               class="form-control" placeholder="Exemplo telefone" maxlength="13"/><br/>
+                    </div>
+                    <label for="usuario-whatsapp">Whatsapp</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-whatsapp" type="tel" th:field="*{whatsapp}" pattern="\([0-9]{2}\)[0-9]{5}-[0-9]{4}"
+                               class="form-control" placeholder="Exemplo whatsapp" maxlength="14"/><br/>
+                    </div>
+                    <label for="usuario-email">Email</label><br>
+                    <div class="mb-3 form-floating">
+                        <input id="usuario-email" type="email" th:field="*{email}"  class="form-control" placeholder="exemplo@exemplo.com"/><br/>
+                    </div>
+                </fieldset>
+                <label for="usuario-cadastro">Data do cadastro</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-cadastro" type="date" th:field="*{usuario_cadastro}"  class="form-control" placeholder="01/01/2000"/><br/>
+                </div>
+                <label for="usuario-exclusao">Data da exclusao</label><br>
+                <div class="mb-3 form-floating">
+                    <input id="usuario-exclusao" type="date" th:field="*{usuario_exclusao}"  class="form-control" placeholder="01/01/2000"/><br/>
+                </div>
+                <label for="usuario-observacao">Observação</label><br>
+                <div class="mb-3 form-floating">
+                    <textarea id="usuario-observacao" th:field="*{observacao}"  class="form-control">Exemplo observação</textarea><br/>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary" type='submit'>Salvar
+                    </button>
+                    <button class="btn btn-primary" type='reset'>Limpar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <a href="/" th:href="@{/}">voltar ao início</a>
+</section>
+</body>
+</html>

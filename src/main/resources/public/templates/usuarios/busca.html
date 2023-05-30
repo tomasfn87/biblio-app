@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br" layout:decorate="~{layout.html}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <title>Listar Usuários Cadastrados</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <div class='container-sm d-flex flex-wrap justify-content-center'>
+            <h1>Usuários Cadastrados</h1>
+            <div class="section text-center w-75">
+                    <div class="mb-3 form-floating">
+                        <form th:action="@{/public/buscar-usuarios}" method="post">
+                            <label for="usuario-busca">Buscar usuário</label><br>
+                            <input id="usuario-busca" type="text" autofocus name="termo" class="form-control" placeholder="Buscar usuário"/><br>
+                            <button class="btn btn-primary" type='submit'>Buscar</button>
+                        </form>
+                    </div>
+                    <hr>
+                    <h2>Resultados</h2>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Endereço</th>
+                                <th>Telefone</th>
+                                <th>WhatsApp</th>
+                                <th>Email</th>
+                                <th>Observação</th>
+                                <!-- Adicionar mais títulos de coluna conforme necessário -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="usuario : ${buscaUsuarios}">
+                                <td th:text="${usuario.nome}"></td>
+                                <td th:text="${usuario.cpf}"></td>
+                                <td th:text="${usuario.endereco}"></td>
+                                <td th:text="${usuario.telefone}"></td>
+                                <td th:text="${usuario.whatsapp}"></td>
+                                <td th:text="${usuario.email}"></td>
+                                <td th:text="${usuario.observacao}"></td>
+                                <!-- Adicionar mais colunas conforme necessário -->
+                            </tr>
+                        </tbody>
+                    </table>
+                <a href="/" th:href="@{/}">voltar ao início</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
