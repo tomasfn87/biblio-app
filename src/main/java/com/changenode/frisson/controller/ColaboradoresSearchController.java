@@ -22,10 +22,34 @@ public class ColaboradoresSearchController {
     }
 
     public List<Colaboradores> obterBuscaPorColaborador(String termo) {
+        Long cpf = null;
+        if (isNumeric(termo)) {
+            cpf = Long.valueOf(termo);
+        }
         return colaboradoresQuery.
-                findByCargoContainingIgnoreCaseOrNomeContainingIgnoreCaseOrCpfContainingOrEnderecoContainingIgnoreCaseOrTelefoneContainingOrWhatsappContainingOrEmailContainingIgnoreCaseOrObservacaoContainingIgnoreCase(
-                        termo, termo, termo, termo,
-                        termo, termo, termo, termo);
+                findByCargoContainingIgnoreCaseOrNomeContainingIgnoreCaseOrCpfOrEnderecoContainingIgnoreCaseOrTelefoneContainingOrWhatsappContainingOrEmailContainingIgnoreCaseOrObservacaoContainingIgnoreCase(
+                        termo,  // Cargo
+                        termo,  // Nome
+                        cpf,    // CPF
+                        termo,  // Endereço
+                        termo,  // Telefone
+                        termo,  // WhatsApp
+                        termo,  // Email
+                        termo); // Observação
+    }
+
+    public static boolean isNumeric(String input) {
+        try {
+            Long.parseLong(input);
+            return true;  // Successfully parsed as a long value
+        } catch (NumberFormatException e) {
+            try {
+                Double.parseDouble(input);
+                return true;  // Successfully parsed as a double value
+            } catch (NumberFormatException ex) {
+                return false;  // Cannot parse as either long or double
+            }
+        }
     }
 
     @GetMapping("/public/buscar-colaboradores")

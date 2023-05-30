@@ -8,15 +8,19 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <h1>Dados enviados pelo usuário:</h1>
+        <div class='container-sm d-flex flex-wrap justify-content-center'>
+            <h1>Dados enviados pelo usuário</h1>
 
-        <p>id: <b th:text="${autor.id}"/></p>
-        <p>id Autor: <b th:text="${autor.id_autor}"/></p>
-        <p>Nome: <b th:text="${autor.nome}"/></p>
-        <p>Sobrenome: <b th:text="${autor.sobrenome}"/></p>
-        <p>Descricao: <b th:text="${autor.descricao}"/></p>
+            <div class="section text-center w-75">
+                <p>ID: <b th:text="${autor.id}"/></p>
+                <p>ID Autor: <b th:text="${autor.idAutor}"/></p>
+                <p>Nome: <b th:text="${autor.nome}"/></p>
+                <p>Sobrenome: <b th:text="${autor.sobrenome}"/></p>
+                <p>Descricao: <b th:text="${autor.descricao}"/></p>
 
-        <a href="/" th:href="@{/}">voltar ao início</a>
+                <a href="/" th:href="@{/}">voltar ao início</a>
+            </div>
+        </div>
     </section>
 </body>
 </html>

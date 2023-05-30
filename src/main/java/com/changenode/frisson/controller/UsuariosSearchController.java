@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+import static org.hibernate.query.criteria.internal.ValueHandlerFactory.isNumeric;
+
 @Controller
 public class UsuariosSearchController {
 
@@ -22,10 +24,19 @@ public class UsuariosSearchController {
     }
 
     public List<Usuarios> obterBuscaPorUsuario(String termo) {
+        Long cpf = null;
+        if (isNumeric(termo)) {
+            cpf = Long.valueOf(termo);
+        }
         return usuariosQuery.
-                findByNomeContainingIgnoreCaseOrCpfContainingOrEnderecoContainingIgnoreCaseOrTelefoneContainingIgnoreCaseOrWhatsappContainingIgnoreCaseOrEmailContainingIgnoreCaseOrObservacaoContainingIgnoreCase(
-                        termo, termo, termo, termo,
-                        termo, termo, termo);
+                findByNomeContainingIgnoreCaseOrCpfOrEnderecoContainingIgnoreCaseOrTelefoneContainingIgnoreCaseOrWhatsappContainingIgnoreCaseOrEmailContainingIgnoreCaseOrObservacaoContainingIgnoreCase(
+                        termo,  // Nome
+                        cpf,    // CPF
+                        termo,  // Endereço
+                        termo,  // Telefone
+                        termo,  // Whatsapp
+                        termo,  // Email
+                        termo); // Observação
     }
 
     @GetMapping("/public/buscar-usuarios")

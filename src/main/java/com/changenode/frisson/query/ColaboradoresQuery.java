@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ColaboradoresQuery extends JpaRepository<Colaboradores, Long> {
-    List<Colaboradores> findByCargoContainingIgnoreCaseOrNomeContainingIgnoreCaseOrCpfContainingOrEnderecoContainingIgnoreCaseOrTelefoneContainingOrWhatsappContainingOrEmailContainingIgnoreCaseOrObservacaoContainingIgnoreCase(
+    List<Colaboradores> findByCargoContainingIgnoreCaseOrNomeContainingIgnoreCaseOrCpfOrEnderecoContainingIgnoreCaseOrTelefoneContainingOrWhatsappContainingOrEmailContainingIgnoreCaseOrObservacaoContainingIgnoreCase(
             String cargo,
             String nome,
-            String cpf,
+            Long cpf,
             String endereco,
             String telefone,
             String whatsapp,

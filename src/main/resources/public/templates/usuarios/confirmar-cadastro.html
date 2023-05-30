@@ -8,22 +8,23 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <h1>Dados enviados pelo usuario:</h1>
+        <div class='container-sm d-flex flex-wrap justify-content-center'>
+            <h1>Dados enviados pelo usuario</h1>
 
-        <!--
-        <p>id: <b th:text="${usuario.id_usuario}"/></p>
-        -->
-        <p>nome: <b th:text="${usuario.nome}"/></p>
-        <p>cpf: <b th:text="${usuario.cpf}"/></p>
-        <p>endereco: <b th:text="${usuario.endereco}"/></p>
-        <p>telefone: <b th:text="${usuario.telefone}"/></p>
-        <p>whatsApp: <b th:text="${usuario.whatsapp}"/></p>
-        <p>email: <b th:text="${usuario.email}"/></p>
-        <p>usuario_cadastro: <b th:text="${usuario.usuario_cadastro}"/></p>
-        <p>usuario_exclusao: <b th:text="${usuario.usuario_exclusao}"/></p>
-        <p>observacao: <b th:text="${usuario.observacao}"/></p>
+            <div class="section text-center w-75">
+                <p>Nome: <b th:text="${usuario.nome}"/></p>
+                <p>CPF: <b th:text="${usuario.cpf}"/></p>
+                <p>Endereco: <b th:text="${usuario.endereco}"/></p>
+                <p>Telefone: <b th:text="${usuario.telefone}"/></p>
+                <p>WhatsApp: <b th:text="${usuario.whatsapp}"/></p>
+                <p>Email: <b th:text="${usuario.email}"/></p>
+                <p>Usuario Cadastro: <b th:text="${usuario.usuarioCadastro}"/></p>
+                <p>Usuario Exclusão: <b th:text="${usuario.usuarioExclusao}"/></p>
+                <p>Observação: <b th:text="${usuario.observacao}"/></p>
 
-        <a href="/" th:href="@{/}">voltar ao início</a>
+                <a href="/" th:href="@{/}">voltar ao início</a>
+            </div>
+        </div>
     </section>
 </body>
 </html>

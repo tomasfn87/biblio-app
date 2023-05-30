@@ -9,17 +9,17 @@ import java.util.Objects;
 @Table(name = "categorias", schema = "public")
 public class Categorias implements Serializable {
 
-    private Long id_categoria;
+    private Long idCategoria;
     private String descricao;
 
     @Id()
     @Column(name = "id_categoria", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId_categoria() {
-        return this.id_categoria;
+    public Long getIdCategoria() {
+        return this.idCategoria;
     }
-    public void setId_categoria(Long id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setIdCategoria(Long idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     @Basic
@@ -36,13 +36,13 @@ public class Categorias implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Categorias that = (Categorias) o;
-        return id_categoria == that.id_categoria    &&
+        return idCategoria == that.idCategoria    &&
                 Objects.equals(descricao, that.descricao)
                 ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_categoria, descricao);
+        return Objects.hash(idCategoria, descricao);
     }
 }

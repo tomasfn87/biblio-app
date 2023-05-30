@@ -20,7 +20,7 @@ public class AutoresController {
     @GetMapping
     public String formCadastro(final Model model) {
         Autores obj = new Autores();
-        obj.setId_autor(UUID.fromString("517d99fe-db7d-467e-b3f2-be5ac8c41752"));
+        obj.setIdAutor(UUID.fromString("517d99fe-db7d-467e-b3f2-be5ac8c41752"));
         model.addAttribute("autor", obj);
         return "templates/autores/formulario";
     }

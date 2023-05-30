@@ -8,16 +8,20 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <h1>Dados enviados pelo usuario:</h1>
+        <div class='container-sm d-flex flex-wrap justify-content-center'>
+            <h1>Dados enviados pelo usuario</h1>
 
-        <p>ID do exemplar: <b th:text="${exemplar.id_exemplar}"/></p>
-        <p>ID do livro: <b th:text="${exemplar.id_livro}"/></p>
-        <p>Data do cadastro: <b th:text="${exemplar.exemplar_cadastro}"/></p>
-        <p>Data do exclusão: <b th:text="${exemplar.exemplar_exclusao}"/></p>
-        <p>Condições: <b th:text="${exemplar.condicoes}"/></p>
-        <p>Observações: <b th:text="${exemplar.observacoes}"/></p>
+            <div class="section text-center w-75">
+                <p>ID do Exemplar: <b th:text="${exemplar.idExemplar}"/></p>
+                <p>ID do Livro: <b th:text="${exemplar.idLivro}"/></p>
+                <p>Data do Cadastro: <b th:text="${exemplar.exemplarCadastro}"/></p>
+                <p>Data do Exclusão: <b th:text="${exemplar.exemplarExclusao}"/></p>
+                <p>Condições: <b th:text="${exemplar.condicoes}"/></p>
+                <p>Observações: <b th:text="${exemplar.observacoes}"/></p>
 
-        <a href="/" th:href="@{/}">voltar ao início</a>
+                <a href="/" th:href="@{/}">voltar ao início</a>
+            </div>
+        </div>
     </section>
 </body>
 </html>

@@ -10,7 +10,7 @@ import java.util.UUID;
 @Table(name = "autores", schema = "public")
 public class Autores implements Serializable {
    private Long id;
-   private UUID id_autor;
+   private UUID idAutor;
    private String nome;
    private String sobrenome;
    private String descricao;
@@ -27,11 +27,11 @@ public class Autores implements Serializable {
 
    @Basic
    @Column(name = "id_autor", nullable = false)
-   public UUID getId_autor() {
-      return this.id_autor;
+   public UUID getIdAutor() {
+      return this.idAutor;
    }
-   public void setId_autor(UUID id_autor) {
-      this.id_autor = id_autor;
+   public void setIdAutor(UUID idAutor) {
+      this.idAutor = idAutor;
    }
 
    @Basic
@@ -63,7 +63,7 @@ public class Autores implements Serializable {
       if (o == null || getClass() != o.getClass()) return false;
       Autores that = (Autores) o;
       return id == that.id &&
-              Objects.equals(id_autor, that.id_autor) &&
+              Objects.equals(idAutor, that.idAutor) &&
               Objects.equals(nome, that.nome) &&
               Objects.equals(sobrenome, that.sobrenome) &&
               Objects.equals(descricao, that.descricao)
@@ -72,7 +72,7 @@ public class Autores implements Serializable {
 
    @Override
    public int hashCode() {
-      return Objects.hash(id, id_autor, nome, sobrenome, descricao);
+      return Objects.hash(id, idAutor, nome, sobrenome, descricao);
    }
 
 }

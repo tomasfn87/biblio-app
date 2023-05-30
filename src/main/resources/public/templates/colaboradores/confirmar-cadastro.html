@@ -8,20 +8,24 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <h1>Dados enviados pelo colaborador:</h1>
+        <div class='container-sm d-flex flex-wrap justify-content-center'>
+            <h1>Dados enviados pelo colaborador</h1>
 
-        <p>id: <b th:text="${colaborador.id_usuario}"/></p>
-        <p>nome: <b th:text="${colaborador.nome}"/></p>
-        <p>cpf: <b th:text="${colaborador.cpf}"/></p>
-        <p>endereco: <b th:text="${colaborador.endereco}"/></p>
-        <p>telefone: <b th:text="${colaborador.telefone}"/></p>
-        <p>whatsApp: <b th:text="${colaborador.whatsapp}"/></p>
-        <p>email: <b th:text="${colaborador.email}"/></p>
-        <p>usuario_cadastro: <b th:text="${colaborador.colaborador_cadastro}"/></p>
-        <p>usuario_exclusao: <b th:text="${colaborador.colaborador_exclusao}"/></p>
-        <p>observacao: <b th:text="${colaborador.observacao}"/></p>
+            <div class="section text-center w-75">
+                <p>ID: <b th:text="${colaborador.idUsuario}"/></p>
+                <p>Nome: <b th:text="${colaborador.nome}"/></p>
+                <p>CPF: <b th:text="${colaborador.cpf}"/></p>
+                <p>Endereço: <b th:text="${colaborador.endereco}"/></p>
+                <p>Telefone: <b th:text="${colaborador.telefone}"/></p>
+                <p>WhatsApp: <b th:text="${colaborador.whatsapp}"/></p>
+                <p>Email: <b th:text="${colaborador.email}"/></p>
+                <p>Usuário Cadastro: <b th:text="${colaborador.colaboradorCadastro}"/></p>
+                <p>Usuário Exclusão: <b th:text="${colaborador.colaboradorExclusao}"/></p>
+                <p>Observação: <b th:text="${colaborador.observacao}"/></p>
 
-        <a href="/" th:href="@{/}">voltar ao início</a>
+                <a href="/" th:href="@{/}">voltar ao início</a>
+            </div>
+        </div>
     </section>
 </body>
 </html>

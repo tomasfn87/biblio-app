@@ -8,12 +8,16 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <h1>Dados enviados pelo usuário:</h1>
+        <div class='container-sm d-flex flex-wrap justify-content-center'>
+            <h1>Dados enviados pelo usuário</h1>
 
-        <p>id: <b th:text="${categoria.id_categoria}"/></p>
-        <p>Descricao: <b th:text="${categoria.descricao}"/></p>
+            <div class="section text-center w-75">
+                <p>ID: <b th:text="${categoria.idCategoria}"/></p>
+                <p>Descrição: <b th:text="${categoria.descricao}"/></p>
 
-        <a href="/" th:href="@{/}">voltar ao início</a>
+                <a href="/" th:href="@{/}">voltar ao início</a>
+            </div>
+        </div>
     </section>
 </body>
 </html>

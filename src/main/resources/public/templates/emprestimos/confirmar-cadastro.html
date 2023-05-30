@@ -8,19 +8,23 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <h1>Dados enviados pelo usuario:</h1>
+        <div class='container-sm d-flex flex-wrap justify-content-center'>
+            <h1>Dados enviados pelo usuario</h1>
 
-        <p>ID Empréstimo: <b th:text="${emprestimo.id_emprestimo}"/></p>
-        <p>ID Exemplar: <b th:text="${emprestimo.id_exemplar}"/></p>
-        <p>ID Usuário: <b th:text="${emprestimo.id_usuario}"/></p>
-        <p>ID Colaborador: <b th:text="${emprestimo.id_colaborador}"/></p>
-        <p>Data da reserva: <b th:text="${emprestimo.emprestimo_reserva}"/></p>
-        <p>Data da retirada: <b th:text="${emprestimo.emprestimo_retirada}"/></p>
-        <p>Data da devolução: <b th:text="${emprestimo.emprestimo_devolucao}"/></p>
-        <p>Data do cancelamento: <b th:text="${emprestimo.emprestimo_cancelamento}"/></p>
-        <p>observação: <b th:text="${emprestimo.observacoes}"/></p>
+            <div class="section text-center w-75">
+                <p>ID Empréstimo: <b th:text="${emprestimo.idEmprestimo}"/></p>
+                <p>ID Exemplar: <b th:text="${emprestimo.idExemplar}"/></p>
+                <p>ID Usuário: <b th:text="${emprestimo.idUsuario}"/></p>
+                <p>ID Colaborador: <b th:text="${emprestimo.idColaborador}"/></p>
+                <p>Data da Reserva: <b th:text="${emprestimo.emprestimoReserva}"/></p>
+                <p>Data da Retirada: <b th:text="${emprestimo.emprestimoRetirada}"/></p>
+                <p>Data da Devolução: <b th:text="${emprestimo.emprestimoDevolucao}"/></p>
+                <p>Data do Cancelamento: <b th:text="${emprestimo.emprestimoCancelamento}"/></p>
+                <p>Observação: <b th:text="${emprestimo.observacoes}"/></p>
 
-        <a href="/" th:href="@{/}">voltar ao início</a>
+                <a href="/" th:href="@{/}">voltar ao início</a>
+            </div>
+        </div>
     </section>
 </body>
 </html>

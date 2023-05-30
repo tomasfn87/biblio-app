@@ -15,7 +15,7 @@ public class Usuarios implements Serializable {
     @Id
     @Column(name = "id_usuario", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_usuario;
+    private Long idUsuario;
     private String nome;
     private Long cpf;
     private String endereco;
@@ -24,17 +24,17 @@ public class Usuarios implements Serializable {
     @Email
     private String email;
     @DateTimeFormat
-    private Date usuario_cadastro;
+    private Date usuarioCadastro;
     @DateTimeFormat
-    private Date usuario_exclusao;
+    private Date usuarioExclusao;
     private String observacao;
 
 
-    public Long getId_usuario() {
-        return this.id_usuario;
+    public Long getIdUsuario() {
+        return this.idUsuario;
     }
-    public void setId_usuario(Long id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @Basic
@@ -98,22 +98,22 @@ public class Usuarios implements Serializable {
 
     @Basic
     @Column(name = "usuario_cadastro", nullable = false)
-    public Date getUsuario_cadastro() {
-        return usuario_cadastro;
+    public Date getUsuarioCadastro() {
+        return usuarioCadastro;
     }
-    public void setUsuario_cadastro(String usuario_cadastro) {
-        if(!usuario_cadastro.isBlank())
-            this.usuario_cadastro = Date.valueOf(usuario_cadastro);
+    public void setUsuarioCadastro(String usuarioCadastro) {
+        if(!usuarioCadastro.isBlank())
+            this.usuarioCadastro = Date.valueOf(usuarioCadastro);
     }
 
     @Basic
     @Column(name = "usuario_exclusao")
-    public Date getUsuario_exclusao() {
-        return usuario_exclusao;
+    public Date getUsuarioExclusao() {
+        return usuarioExclusao;
     }
-    public void setUsuario_exclusao(String usuario_exclusao) {
-        if(!usuario_exclusao.isBlank())
-            this.usuario_exclusao = Date.valueOf(usuario_exclusao);
+    public void setUsuarioExclusao(String usuarioExclusao) {
+        if(!usuarioExclusao.isBlank())
+            this.usuarioExclusao = Date.valueOf(usuarioExclusao);
     }
 
     @Basic
@@ -130,15 +130,15 @@ public class Usuarios implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuarios that = (Usuarios) o;
-        return id_usuario == that.id_usuario &&
+        return idUsuario == that.idUsuario &&
                 Objects.equals(nome, that.nome) &&
-                Objects.equals(cpf,that.cpf) &&
-                Objects.equals(endereco,that.endereco) &&
-                Objects.equals(telefone,that.telefone) &&
-                Objects.equals(whatsapp,that.whatsapp) &&
-                Objects.equals(email,that.email) &&
-                Objects.equals(usuario_cadastro,that.usuario_cadastro) &&
-                Objects.equals(usuario_exclusao,that.usuario_exclusao) &&
+                Objects.equals(cpf, that.cpf) &&
+                Objects.equals(endereco, that.endereco) &&
+                Objects.equals(telefone, that.telefone) &&
+                Objects.equals(whatsapp, that.whatsapp) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(usuarioCadastro, that.usuarioCadastro) &&
+                Objects.equals(usuarioExclusao, that.usuarioExclusao) &&
                 Objects.equals(observacao, that.observacao)
                 ;
     }
@@ -146,15 +146,15 @@ public class Usuarios implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(
-            id_usuario,
+            idUsuario,
             nome,
             cpf,
             endereco,
             telefone,
             whatsapp,
             email,
-            usuario_cadastro,
-            usuario_exclusao,
+            usuarioCadastro,
+            usuarioExclusao,
             observacao
         );
     }

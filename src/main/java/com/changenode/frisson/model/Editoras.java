@@ -8,17 +8,17 @@ import java.util.Objects;
 @Table(name = "editoras", schema = "public")
 public class Editoras {
 
-    private Long id_editora;
+    private Long idEditora;
     private String nome;
 
     @Id()
     @Column(name = "id_editora", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId_editora() {
-        return id_editora;
+    public Long getIdEditora() {
+        return idEditora;
     }
-    public void setId_editora(Long id_editora) {
-        this.id_editora = id_editora;
+    public void setIdEditora(Long idEditora) {
+        this.idEditora = idEditora;
     }
 
     @Basic
@@ -35,13 +35,13 @@ public class Editoras {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Editoras that = (Editoras) o;
-        return id_editora == that.id_editora    &&
+        return idEditora == that.idEditora    &&
                 Objects.equals(nome, that.nome)
                 ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_editora, nome);
+        return Objects.hash(idEditora, nome);
     }
 }

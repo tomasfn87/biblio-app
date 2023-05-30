@@ -8,12 +8,16 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <h1>Dados enviados pelo usuário:</h1>
+        <div class='container-sm d-flex flex-wrap justify-content-center'>
+            <h1>Dados enviados pelo usuário</h1>
 
-        <p>id Editora: <b th:text="${editora.id_editora}"/></p>
-        <p>Nome: <b th:text="${editora.nome}"/></p>
+            <div class="section text-center w-75">
+                <p>ID Editora: <b th:text="${editora.idEditora}"/></p>
+                <p>Nome: <b th:text="${editora.nome}"/></p>
 
-        <a href="/" th:href="@{/}">voltar ao início</a>
+                <a href="/" th:href="@{/}">voltar ao início</a>
+            </div>
+        </div>
     </section>
 </body>
 </html>

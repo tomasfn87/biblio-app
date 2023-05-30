@@ -12,12 +12,12 @@ import java.util.Objects;
 @Table(name = "livros", schema = "public")
 public class Livros {
 
-    private Long id_livro;
+    private Long idLivro;
     private String isbn;
     private String titulo;
     private Integer ano;
     private Integer edicao;
-    private Long id_editora;
+    private Long idEditora;
     private String assuntos;
     /**
      *  Os atributos de categoria e autores devem ser datas
@@ -27,19 +27,19 @@ public class Livros {
     private String palavrasChaves;
     private Integer prazo;
     @DateTimeFormat
-    private Date livro_registro;
+    private Date livroRegistro;
     @DateTimeFormat
-    private Date livro_exclusao;
+    private Date livroExclusao;
     private String observacoes;
 
     @Id()
     @Column(name = "id_livro", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId_livro() {
-        return id_livro;
+    public Long getIdLivro() {
+        return idLivro;
     }
-    public void setId_livro(Long id_livro) {
-        this.id_livro = id_livro;
+    public void setIdLivro(Long idLivro) {
+        this.idLivro = idLivro;
     }
 
     @Basic
@@ -83,12 +83,12 @@ public class Livros {
 
     @Basic
     @Column(name = "id_editora")
-    public Long getId_editora() {
-        return id_editora;
+    public Long getIdEditora() {
+        return idEditora;
     }
-    public void setId_editora(String id_editora) {
-        if(!id_editora.isBlank())
-            this.id_editora = Long.valueOf(id_editora);
+    public void setIdEditora(String idEditora) {
+        if(!idEditora.isBlank())
+            this.idEditora = Long.valueOf(idEditora);
     }
 
     @Basic
@@ -123,22 +123,22 @@ public class Livros {
 
     @Basic
     @Column(name = "livro_registro")
-    public Date getLivro_registro() {
-        return livro_registro;
+    public Date getLivroRegistro() {
+        return livroRegistro;
     }
-    public void setLivro_registro(String livro_registro) {
-        if(!livro_registro.isBlank())
-            this.livro_registro = Date.valueOf(livro_registro);
+    public void setLivroRegistro(String livroRegistro) {
+        if(!livroRegistro.isBlank())
+            this.livroRegistro = Date.valueOf(livroRegistro);
     }
 
     @Basic
     @Column(name = "livro_exclusao")
-    public Date getLivro_exclusao() {
-        return livro_exclusao;
+    public Date getLivroExclusao() {
+        return livroExclusao;
     }
-    public void setLivro_exclusao(String livro_exclusao) {
-        if(!livro_exclusao.isBlank())
-            this.livro_exclusao = Date.valueOf(livro_exclusao);
+    public void setLivroExclusao(String livroExclusao) {
+        if(!livroExclusao.isBlank())
+            this.livroExclusao = Date.valueOf(livroExclusao);
     }
 
     @Basic
@@ -155,17 +155,17 @@ public class Livros {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Livros that = (Livros) o;
-        return id_livro == that.id_livro &&
+        return idLivro == that.idLivro &&
                 Objects.equals(isbn, that.isbn) &&
                 Objects.equals(titulo,that.titulo) &&
                 Objects.equals(ano,that.ano) &&
                 Objects.equals(edicao,that.edicao) &&
-                Objects.equals(id_editora,that.id_editora) &&
+                Objects.equals(idEditora,that.idEditora) &&
                 Objects.equals(assuntos,that.assuntos) &&
                 Objects.equals(palavrasChaves,that.palavrasChaves) &&
                 Objects.equals(prazo,that.prazo) &&
-                Objects.equals(livro_registro,that.livro_registro) &&
-                Objects.equals(livro_exclusao,that.livro_exclusao) &&
+                Objects.equals(livroRegistro,that.livroRegistro) &&
+                Objects.equals(livroExclusao,that.livroExclusao) &&
                 Objects.equals(observacoes, that.observacoes)
                 ;
     }
@@ -173,17 +173,17 @@ public class Livros {
     @Override
     public int hashCode() {
         return Objects.hash(
-            id_livro,
+            idLivro,
             isbn,
             titulo,
             ano,
             edicao,
-            id_editora,
+            idEditora,
             assuntos,
             palavrasChaves,
             prazo,
-            livro_registro,
-            livro_exclusao,
+            livroRegistro,
+            livroExclusao,
             observacoes
         );
     }

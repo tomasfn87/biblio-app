@@ -8,22 +8,26 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <h1>Dados enviados pelo usuario:</h1>
+        <div class='container-sm d-flex flex-wrap justify-content-center'>
+            <h1>Dados enviados pelo usuario</h1>
 
-        <p>ID do livro: <b th:text="${livro.id_livro}"/></p>
-        <p>ISBN: <b th:text="${livro.isbn}"/></p>
-        <p>Título: <b th:text="${livro.titulo}"/></p>
-        <p>Ano: <b th:text="${livro.ano}"/></p>
-        <p>Edição: <b th:text="${livro.edicao}"/></p>
-        <p>ID da Editora: <b th:text="${livro.id_editora}"/></p>
-        <p>Assuntos: <b th:text="${livro.assuntos}"/></p>
-        <p>Palavras chaves: <b th:text="${livro.palavras_chaves}"/></p>
-        <p>Prazo de devolução (dias): <b th:text="${livro.prazo}"/></p>
-        <p>Data do registro: <b th:text="${livro.livro_registro}"/></p>
-        <p>Data da exclusão: <b th:text="${livro.livro_exclusao}"/></p>
-        <p>observação: <b th:text="${livro.observacoes}"/></p>
+            <div class="section text-center w-75">
+                <p>ID do livro: <b th:text="${livro.idLivro}"/></p>
+                <p>ISBN: <b th:text="${livro.isbn}"/></p>
+                <p>Título: <b th:text="${livro.titulo}"/></p>
+                <p>Ano: <b th:text="${livro.ano}"/></p>
+                <p>Edição: <b th:text="${livro.edicao}"/></p>
+                <p>ID da Editora: <b th:text="${livro.idEditora}"/></p>
+                <p>Assuntos: <b th:text="${livro.assuntos}"/></p>
+                <p>Palavras-Chaves: <b th:text="${livro.palavrasChaves}"/></p>
+                <p>Prazo de Devolução (dias): <b th:text="${livro.prazo}"/></p>
+                <p>Data do Registro: <b th:text="${livro.livroRegistro}"/></p>
+                <p>Data da Exclusão: <b th:text="${livro.livroExclusao}"/></p>
+                <p>Observação: <b th:text="${livro.observacoes}"/></p>
 
-        <a href="/" th:href="@{/}">voltar ao início</a>
+                <a href="/" th:href="@{/}">voltar ao início</a>
+            </div>
+        </div>
     </section>
 </body>
 </html>

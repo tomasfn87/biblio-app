@@ -33,7 +33,7 @@
                 </div>
                 <label for="livro-id-editora">ID da Editora</label><br>
                 <div class="mb-3 form-floating">
-                    <input id="livro-id-editora" type="number" th:field="*{id_editora}" required disabled class="form-control"/>
+                    <input id="livro-id-editora" type="number" th:field="*{idEditora}" required disabled class="form-control"/>
                     <input name="emprestimo-nome-editora" type="text" class="form-control" disabled placeholder="nome da editora"/>
                     <button class="btn btn-primary">Buscar</button><br/>
                 </div>
@@ -53,11 +53,11 @@
                     <legend>Datas de registro</legend>
                     <label for="livro-data-registro">Registro</label><br>
                     <div class="mb-3 form-floating">
-                        <input id="livro-data-registro" type="date" th:field="*{livro_registro}" class="form-control" required/><br/>
+                        <input id="livro-data-registro" type="date" th:field="*{livroRegistro}" class="form-control" required/><br/>
                     </div>
                     <label for="livro-data-exclusao">Exclusão</label><br>
                     <div class="mb-3 form-floating">
-                        <input id="livro-data-exclusao" type="date" th:field="*{livro_exclusao}" class="form-control"/><br/>
+                        <input id="livro-data-exclusao" type="date" th:field="*{livroExclusao}" class="form-control"/><br/>
                     </div>
                 </fieldset>
                 <label for="livro-observacoes">Observações</label><br>

@@ -16,7 +16,7 @@ public class Colaboradores{
     @Id
     @Column(name = "id_usuario", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_usuario;
+    private Long idUsuario;
     private String cargo;
     private String nome;
     private Long cpf;
@@ -26,16 +26,16 @@ public class Colaboradores{
     @Email
     private String email;
     @DateTimeFormat
-    private Date colaborador_cadastro;
+    private Date colaboradorCadastro;
     @DateTimeFormat
-    private Date colaborador_exclusao;
+    private Date colaboradorExclusao;
     private String observacao;
 
-    public Long getId_usuario() {
-        return this.id_usuario;
+    public Long getIdUsuario() {
+        return this.idUsuario;
     }
-    public void setId_usuario(Long id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
     @Basic
     @Column(name = "cargo", nullable = false)
@@ -109,22 +109,22 @@ public class Colaboradores{
 
     @Basic
     @Column(name = "colaborador_cadastro", nullable = false)
-    public Date getColaborador_cadastro() {
-        return colaborador_cadastro;
+    public Date getColaboradorCadastro() {
+        return colaboradorCadastro;
     }
-    public void setColaborador_cadastro(String colaborador_cadastro) {
-        if(!colaborador_cadastro.isBlank())
-            this.colaborador_cadastro = Date.valueOf(colaborador_cadastro);
+    public void setColaboradorCadastro(String colaboradorCadastro) {
+        if(!colaboradorCadastro.isBlank())
+            this.colaboradorCadastro = Date.valueOf(colaboradorCadastro);
     }
 
     @Basic
     @Column(name = "colaborador_exclusao")
-    public Date getColaborador_exclusao() {
-        return colaborador_exclusao;
+    public Date getColaboradorExclusao() {
+        return colaboradorExclusao;
     }
-    public void setColaborador_exclusao(String colaborador_exclusao) {
-        if(!colaborador_exclusao.isBlank())
-            this.colaborador_exclusao = Date.valueOf(colaborador_exclusao);
+    public void setColaboradorExclusao(String colaboradorExclusao) {
+        if(!colaboradorExclusao.isBlank())
+            this.colaboradorExclusao = Date.valueOf(colaboradorExclusao);
     }
 
     @Basic
@@ -141,16 +141,16 @@ public class Colaboradores{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Colaboradores that = (Colaboradores) o;
-        return id_usuario == that.id_usuario &&
+        return idUsuario == that.idUsuario &&
                 Objects.equals(cargo, that.cargo) &&
                 Objects.equals(nome, that.nome) &&
-                Objects.equals(cpf,that.cpf) &&
-                Objects.equals(endereco,that.endereco) &&
-                Objects.equals(telefone,that.telefone) &&
-                Objects.equals(whatsapp,that.whatsapp) &&
-                Objects.equals(email,that.email) &&
-                Objects.equals(colaborador_cadastro,that.colaborador_cadastro) &&
-                Objects.equals(colaborador_exclusao,that.colaborador_exclusao) &&
+                Objects.equals(cpf, that.cpf) &&
+                Objects.equals(endereco, that.endereco) &&
+                Objects.equals(telefone, that.telefone) &&
+                Objects.equals(whatsapp, that.whatsapp) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(colaboradorCadastro, that.colaboradorCadastro) &&
+                Objects.equals(colaboradorExclusao, that.colaboradorExclusao) &&
                 Objects.equals(observacao, that.observacao)
                 ;
     }
@@ -158,7 +158,7 @@ public class Colaboradores{
     @Override
     public int hashCode() {
         return Objects.hash(
-                id_usuario,
+                idUsuario,
                 cargo,
                 nome,
                 cpf,
@@ -166,8 +166,8 @@ public class Colaboradores{
                 telefone,
                 whatsapp,
                 email,
-                colaborador_cadastro,
-                colaborador_exclusao,
+                colaboradorCadastro,
+                colaboradorExclusao,
                 observacao
         );
     }
